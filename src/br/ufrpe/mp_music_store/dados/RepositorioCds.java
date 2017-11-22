@@ -5,6 +5,7 @@ public class RepositorioCds {
 	
 	private Cd[] cd;
 	private int proxima;
+	private static RepositorioCds instance;
 	
 	//Construtor
 	public RepositorioCds(int tamanho){
@@ -12,6 +13,14 @@ public class RepositorioCds {
 		this.proxima = 0;
 	}
 	
+	//Singleton
+		public static RepositorioCds getInstance() {
+			if(instance == null) {
+				instance = new RepositorioCds(100);
+			}
+			
+			return instance;
+		}
 	
 	//Catalogar CD
 	public void cadastrar(Cd c){

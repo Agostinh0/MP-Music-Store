@@ -5,11 +5,21 @@ public class RepositorioClientes {
 	
 	private Cliente[] cliente;
 	private int proxima;
+	private static RepositorioClientes instance;
 	
 	//Construtor
 	public RepositorioClientes(int tamanho){
 		this.cliente = new Cliente[tamanho];
 		this.proxima = 0;
+	}
+	
+	//Singleton
+	public static RepositorioClientes getInstance() {
+		if(instance == null) {
+			instance = new RepositorioClientes(100);
+		}
+		
+		return instance;
 	}
 	
 	//Cadastrar Cliente

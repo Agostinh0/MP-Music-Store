@@ -8,7 +8,15 @@ public class CadastroFuncionarios {
 	private static CadastroFuncionarios instance;
 	
 	private CadastroFuncionarios() {
-		this.repositorio = new RepositorioFuncionarios(10);
+		this.repositorio = RepositorioFuncionarios.getInstance();
+	}
+	
+	public static CadastroFuncionarios getInstance() {
+		if(instance == null) {
+			instance = new CadastroFuncionarios();
+		}
+		
+		return instance;
 	}
 	
 	public void adicionaFuncionario(Funcionario f) {

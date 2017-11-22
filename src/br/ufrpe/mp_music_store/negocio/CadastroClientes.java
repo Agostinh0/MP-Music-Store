@@ -9,9 +9,16 @@ public class CadastroClientes {
 	private static CadastroClientes instance;
 	
 	private CadastroClientes() {
-		this.repositorio = new RepositorioClientes(10);
+		this.repositorio = RepositorioClientes.getInstance();
 	}
 	
+	public static CadastroClientes getInstance() {
+		if(instance == null) {
+			instance = new CadastroClientes();
+		}
+		
+		return instance;
+	}
 	
 	public void adicionarCliente(Cliente c) {
 		if(c == null) {

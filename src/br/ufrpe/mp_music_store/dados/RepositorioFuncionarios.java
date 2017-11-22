@@ -5,12 +5,22 @@ public class RepositorioFuncionarios {
 	
 	private Funcionario[] funcionario;
 	private int proxima;
+	private static RepositorioFuncionarios instance;
 	
 	//Construtor
 	public RepositorioFuncionarios(int tamanho){
 		this.funcionario = new Funcionario[tamanho];
 		this.proxima = 0;
 	}
+	
+	//Singleton
+		public static RepositorioFuncionarios getInstance() {
+			if(instance == null) {
+				instance = new RepositorioFuncionarios(100);
+			}
+			
+			return instance;
+		}
 	
 	//Cadastrar Funcionário
 	public void cadastrar(Funcionario f){
