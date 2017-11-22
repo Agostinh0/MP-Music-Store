@@ -8,9 +8,16 @@ public class CatalogoCds {
 	private static CatalogoCds instance;
 	
 	private CatalogoCds() {
-		this.repositorio = new RepositorioCds(10);
+		this.repositorio = RepositorioCds.getInstance();
 	}
 	
+	public static CatalogoCds getInstance() {
+		if(instance == null) {
+			instance = new CatalogoCds();
+		}
+		
+		return instance;
+	}
 	
 	public void adicionaCds(Cd c) {
 		if(c == null) {
