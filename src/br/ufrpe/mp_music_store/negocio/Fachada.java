@@ -73,4 +73,8 @@ public class Fachada {
 	public boolean existeCd(String titulo) {
 		return this.cadastroCds.existeCd(titulo);
 	}
+	
+	public void atualizarCd(String nome, int anoLancamento, String artista, float preco){
+		this.cadastroCds.atualizarCds(nome, anoLancamento, artista, preco);
+	}
 }

@@ -72,6 +72,19 @@ public class RepositorioCds {
 		return existe;
 	}
 	
+	//Atualizar informações do CD
+	public void atualizar(String titulo, int anoLancamento, String artista, float preco){
+		int i = procurarIndice(titulo);
+		
+		if(i >= 0){
+			this.cd[i].setTitulo(titulo);
+			this.cd[i].setAnoLancamento(anoLancamento);
+			this.cd[i].setArtista(artista);
+			this.cd[i].setPreco(preco);
+		}
+		
+	}
+	
 	//Remover do array de CD's
 	public void remover(String nome){
 		int i = this.procurarIndice(nome);

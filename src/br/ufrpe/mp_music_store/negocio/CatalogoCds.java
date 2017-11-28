@@ -44,6 +44,14 @@ public class CatalogoCds {
 		}
 	}
 	
+	public void atualizarCds(String nome, int anoLancamento, String artista, float preco){
+		if(nome == null){
+			//message error
+		}else {
+			repositorio.atualizar(nome, anoLancamento, artista, preco);
+		}
+	}
+	
 	public boolean existeCd(String titulo) {
 		if(titulo == null) {
 			//return fudeu amigo

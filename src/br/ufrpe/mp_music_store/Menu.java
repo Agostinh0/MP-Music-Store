@@ -15,7 +15,7 @@ public class Menu {
 		System.out.println("**********MP MUSIC STORE**********\n");
 	}
 	
-	private void menuPrincipal(){
+	public void menuPrincipal(){
 	int operacao;
 		
 	do{
@@ -24,7 +24,7 @@ public class Menu {
 		System.out.println("1 - CD's\n"
 							+ "2 - Clientes\n"
 							+ "3 - Funcionários\n"
-							+ "4 - Sair");
+							+ "4 - Sair\n");
 		
 		operacao = in.nextInt();
 		
@@ -39,9 +39,9 @@ public class Menu {
 						System.out.println("Escolha uma operação: ");
 						System.out.println("1 - Cadastrar\n"
 											+ "2 - Pesquisar"
-											+ "3 - Remover"
-											+ "4 - Editar"
-											+ "5 - Sair");
+											+ "\n3 - Remover"
+											+ "\n4 - Editar"
+											+ "\n5 - Sair\n");
 					
 					int op = in.nextInt();
 					
@@ -60,6 +60,8 @@ public class Menu {
 								
 								System.out.println("Ano de lançamento: ");
 								int anoLancamentoCd = in.nextInt();
+								
+								in.nextLine();//Limpar buffer
 								
 								System.out.println("Artista: ");
 								String artistaCd = in.nextLine();
@@ -135,8 +137,40 @@ public class Menu {
 							pesquisa = in.nextLine();
 							
 							Cd edita = null;
-							//Ainda a implementar método editar
+							edita = fachada.buscarCd(pesquisa);
+							
+							if(edita != null){
+								System.out.println("Insira os novos dados abaixo: ");
+								
+								System.out.println("Título do CD: ");
+								String tituloCd = in.nextLine();
+								
+								System.out.println("Ano de lançamento: ");
+								int anoLancamentoCd = in.nextInt();
+								
+								in.nextLine();//Limpar buffer
+								
+								System.out.println("Artista: ");
+								String artistaCd = in.nextLine();
+								
+								System.out.println("Defina um preço ");
+								float precoCd = in.nextFloat();
+								
+								fachada.atualizarCd(tituloCd, anoLancamentoCd, artistaCd, precoCd);
+								System.out.println("Dados atualizados!");
+							}else{
+								System.out.println("CD não encontrado.");
+							}
+							
+							break;
+						
+						case 5:
+							
+							System.out.println("Retornando ao menu...");
+							in.nextLine();
+							operadorAuxiliar = 5;
 					}
+					
 				}
 			}
 
