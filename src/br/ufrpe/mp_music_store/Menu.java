@@ -169,10 +169,9 @@ public class Menu {
 							System.out.println("Retornando ao menu...");
 							in.nextLine();
 							operadorAuxiliar = 5;
-					}
-					
-				}
+				} 
 			}
+		}
 
 		}while(operacao != 5);
 		//Ainda a implementar 

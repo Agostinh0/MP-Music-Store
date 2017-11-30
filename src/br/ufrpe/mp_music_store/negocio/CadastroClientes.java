@@ -37,7 +37,13 @@ public class CadastroClientes {
 		return this.repositorio.buscar(cpf);
 	}
 	
-	//Falta a atualização de geral. Alterar dados, etc.
+	public void atualizarCliente(String nome, int cpf, String endereco, int tel, int numCadastro){
+		if(cpf == 0){
+			//error message
+		}else{
+			repositorio.atualizar(nome, cpf, endereco, tel, numCadastro);
+		}
+	}
 	
 	public void removerCliente(int cpf) {
 		if(cpf == 0) {

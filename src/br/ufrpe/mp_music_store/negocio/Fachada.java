@@ -36,6 +36,10 @@ public class Fachada {
 		this.cadastroClientes.removerCliente(cpf);
 	}
 	
+	public void atualizarCliente(String nome, int cpf, String endereco, int tel, int numCadastro){
+		this.cadastroClientes.atualizarCliente(nome, cpf, endereco, tel, numCadastro);
+	}
+	
 	public boolean existeCliente(int cpf) {
 		return this.cadastroClientes.existeCliente(cpf);
 	}
@@ -47,6 +51,11 @@ public class Fachada {
 	
 	public Funcionario buscarFuncionario(int cpf) {
 		return this.cadastroFuncionarios.buscarFuncionario(cpf);
+	}
+	
+	public void atualizarFuncionario(String nome, int cpf, String endereco, int tel, float salario,
+			int numContrato){
+		this.cadastroFuncionarios.atualizar(nome, cpf, endereco, tel, salario, numContrato);
 	}
 	
 	public void removerFuncionario(int cpf) {

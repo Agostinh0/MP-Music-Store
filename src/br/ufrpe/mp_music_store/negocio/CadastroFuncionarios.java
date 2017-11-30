@@ -35,6 +35,15 @@ public class CadastroFuncionarios {
 		return this.repositorio.buscar(cpf);
 	}
 	
+	public void atualizar(String nome, int cpf, String endereco, int tel, float salario, 
+			int numContrato){
+		if(cpf == 0){
+			//error message
+		}else{
+			repositorio.atualizar(nome, cpf, endereco, tel, salario, numContrato);
+		}
+	}
+	
 	public void removerFuncionario(int cpf) {
 		if(cpf == 0) {
 			//message error

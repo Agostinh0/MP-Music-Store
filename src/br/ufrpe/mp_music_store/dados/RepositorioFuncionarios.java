@@ -74,6 +74,22 @@ public class RepositorioFuncionarios {
 		return existe;
 	}
 	
+	//Atualizar informações do CD
+		public void atualizar(String nome, int cpf, String endereco, int tel, float salario, 
+				int numContrato){
+			int i = procurarIndice(cpf);
+			
+			if(i >= 0){
+				this.funcionario[i].setNome(nome);
+				this.funcionario[i].setCpf(cpf);
+				this.funcionario[i].setEndereco(endereco);
+				this.funcionario[i].setTelefone(tel);
+				this.funcionario[i].setSalario(salario);
+				this.funcionario[i].setNumContrato(numContrato);
+			}
+			
+		}
+	
 	//Remover do array de funcionários
 	public void remover(int cpf){
 		int i = this.procurarIndice(cpf);

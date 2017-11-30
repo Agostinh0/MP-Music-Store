@@ -71,6 +71,20 @@ public class RepositorioClientes {
 		return existe;
 	}
 	
+	//Atualizar informações do Cliente
+		public void atualizar(String nome, int cpf, String endereco, int tel, int numCadastro){
+			int i = procurarIndice(cpf);
+			
+			if(i >= 0){
+				this.cliente[i].setNome(nome);
+				this.cliente[i].setCpf(cpf);
+				this.cliente[i].setEndereco(endereco);
+				this.cliente[i].setTelefone(tel);
+				this.cliente[i].setNumCadastro(numCadastro);
+			}
+			
+		}
+	
 	//Remover do array de clientes
 	public void remover(int cpf){
 		int i = this.procurarIndice(cpf);
