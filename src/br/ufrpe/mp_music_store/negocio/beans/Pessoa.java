@@ -3,12 +3,12 @@ package br.ufrpe.mp_music_store.negocio.beans;
 public class Pessoa {
 	
 	private String nome;
-	private int cpf;
+	private long cpf;
 	private String endereco;
-	private int telefone;
+	private long telefone;
 	
 	//Construtor
-	public Pessoa(String nome, int cpf, String endereco, int telefone) {
+	public Pessoa(String nome, long cpf, String endereco, long telefone) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
@@ -25,12 +25,12 @@ public class Pessoa {
 		this.nome = nome;
 	}
 	
-	public int getCpf() {
+	public long getCpf() {
 		return cpf;
 	}
 	
-	public void setCpf(int cpf) {
-		this.cpf = cpf;
+	public void setCpf(long cpfCliente) {
+		this.cpf = cpfCliente;
 	}
 	
 	public String getEndereco() {
@@ -41,12 +41,12 @@ public class Pessoa {
 		this.endereco = endereco;
 	}
 	
-	public int getTelefone() {
+	public long getTelefone() {
 		return telefone;
 	}
 	
-	public void setTelefone(int telefone) {
-		this.telefone = telefone;
+	public void setTelefone(long telefoneCliente) {
+		this.telefone = telefoneCliente;
 	}
 	
 	

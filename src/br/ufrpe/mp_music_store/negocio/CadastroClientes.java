@@ -29,23 +29,23 @@ public class CadastroClientes {
 		}
 	}
 	
-	public Cliente buscarCliente(int cpf) {
-		if(cpf == 0) {
+	public Cliente buscarCliente(long pesquisa) {
+		if(pesquisa == 0) {
 			//return error message
 		}
 		
-		return this.repositorio.buscar(cpf);
+		return this.repositorio.buscar(pesquisa);
 	}
 	
-	public void atualizarCliente(String nome, int cpf, String endereco, int tel, int numCadastro){
-		if(cpf == 0){
+	public void atualizarCliente(String nome, long cpfCliente, String endereco, long telefoneCliente, int numCadastro){
+		if(cpfCliente == 0){
 			//error message
 		}else{
-			repositorio.atualizar(nome, cpf, endereco, tel, numCadastro);
+			repositorio.atualizar(nome, cpfCliente, endereco, telefoneCliente, numCadastro);
 		}
 	}
 	
-	public void removerCliente(int cpf) {
+	public void removerCliente(long cpf) {
 		if(cpf == 0) {
 			//error message
 		}
@@ -54,7 +54,7 @@ public class CadastroClientes {
 		}
 	}
 	
-	public boolean existeCliente(int cpf) {
+	public boolean existeCliente(long cpf) {
 		if(cpf == 0) {
 			//return error message
 		}

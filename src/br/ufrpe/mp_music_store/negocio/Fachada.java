@@ -28,19 +28,19 @@ public class Fachada {
 		this.cadastroClientes.adicionarCliente(c);
 	}
 	
-	public Cliente buscarCliente(int cpf) {
+	public Cliente buscarCliente(long cpf) {
 		return this.cadastroClientes.buscarCliente(cpf);
 	}
 	
-	public void removerCliente(int cpf) {
+	public void removerCliente(long cpf) {
 		this.cadastroClientes.removerCliente(cpf);
 	}
 	
-	public void atualizarCliente(String nome, int cpf, String endereco, int tel, int numCadastro){
-		this.cadastroClientes.atualizarCliente(nome, cpf, endereco, tel, numCadastro);
+	public void atualizarCliente(String nome, long cpfCliente, String endereco, long telefoneCliente, int numCadastro){
+		this.cadastroClientes.atualizarCliente(nome, cpfCliente, endereco, telefoneCliente, numCadastro);
 	}
 	
-	public boolean existeCliente(int cpf) {
+	public boolean existeCliente(long cpf) {
 		return this.cadastroClientes.existeCliente(cpf);
 	}
 	

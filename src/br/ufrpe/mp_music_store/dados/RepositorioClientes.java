@@ -37,7 +37,7 @@ public class RepositorioClientes {
 	}
 	
 	//Buscar cliente por CPF
-	public Cliente buscar(int cpf){
+	public Cliente buscar(long cpf){
 		int i = this.procurarIndice(cpf);
 		Cliente resultado = null;
 		if(i != this.proxima){
@@ -47,7 +47,7 @@ public class RepositorioClientes {
 	}
 	
 	//Buscar índice
-	private int procurarIndice(int cpf){
+	private int procurarIndice(long cpf){
 		int i = 0;
 		boolean achou = false;
 		
@@ -62,7 +62,7 @@ public class RepositorioClientes {
 	}
 	
 	//Verficar se cliente existe
-	public boolean existe(int cpf){
+	public boolean existe(long cpf){
 		boolean existe = false;
 		int indice = this.procurarIndice(cpf);
 		if(indice != proxima){
@@ -72,28 +72,28 @@ public class RepositorioClientes {
 	}
 	
 	//Atualizar informações do Cliente
-		public void atualizar(String nome, int cpf, String endereco, int tel, int numCadastro){
-			int i = procurarIndice(cpf);
+		public void atualizar(String nome, long cpfCliente, String endereco, long telefoneCliente, int numCadastro){
+			int i = procurarIndice(cpfCliente);
 			
 			if(i >= 0){
 				this.cliente[i].setNome(nome);
-				this.cliente[i].setCpf(cpf);
+				this.cliente[i].setCpf(cpfCliente);
 				this.cliente[i].setEndereco(endereco);
-				this.cliente[i].setTelefone(tel);
+				this.cliente[i].setTelefone(telefoneCliente);
 				this.cliente[i].setNumCadastro(numCadastro);
 			}
 			
 		}
 	
 	//Remover do array de clientes
-	public void remover(int cpf){
+	public void remover(long cpf){
 		int i = this.procurarIndice(cpf);
 		if(i != this.proxima){
 			this.cliente[i] = this.cliente[this.proxima - 1];
-			this.cliente[this.proxima] = null;
+			this.cliente[this.proxima - 1] = null;
 			this.proxima = this.proxima - 1;
 		}else{
-			
+			//return error message
 		}
 	}
 	

@@ -100,6 +100,7 @@ public class Menu {
 							break;
 					
 						case 3: 
+							this.moldura();
 							
 							in.nextLine();//Limpar buffer
 							System.out.println("Remoção de CD's do catálogo");
@@ -129,6 +130,7 @@ public class Menu {
 							break;
 						
 						case 4:
+							this.moldura();
 							
 							in.nextLine();//Limpa buffer
 							System.out.println("Atualização de informações de um CD");
@@ -171,6 +173,163 @@ public class Menu {
 							operadorAuxiliar = 5;
 				} 
 			}
+			case 2: 
+					this.moldura();
+					operadorAuxiliar = 0;
+					
+					while(operadorAuxiliar != 5){
+						System.out.println("Menu de Clientes\n");
+						System.out.println("Escolha uma operação: \n\n");
+						System.out.println("1 - Cadastrar\n"
+											+ "2 - Pesquisar\n"
+						                    + "3 - Remover\n"
+											+ "4 - Editar\n"
+						                    + "5 - Sair\n");
+						
+						int op = in.nextInt();
+						
+						switch(op){
+							
+							case 1:
+									this.moldura();
+									boolean realizado = false;
+									
+									do{
+									in.nextLine();//Limpar buffer
+									System.out.println("Nome do cliente: ");
+									String nomeCliente = in.nextLine();
+									
+									System.out.println("CPF do cliente: ");
+									long cpfCliente = in.nextLong();
+									
+									in.nextLine();//Limpar buffer
+									
+									System.out.println("Endereço do cliente: ");
+									String enderecoCliente = in.nextLine();
+									
+									System.out.println("Telefone para contato: ");
+									long telefoneCliente = in.nextLong();
+									
+									in.nextLine();//Limpar buffer
+									
+									System.out.println("Defina um número de cadastro");
+									int numCadastroCliente = in.nextInt();
+									
+									in.nextLine();//Limpar buffer
+									
+									Cliente cliente = new Cliente(nomeCliente, cpfCliente, enderecoCliente,
+											telefoneCliente, numCadastroCliente);
+									
+									fachada.adicionarCliente(cliente);
+									realizado = true;
+									System.out.println("Cliente cadastrado com sucesso!");
+						
+									}while(realizado == false);
+									
+									break;
+							
+							case 2: 
+									this.moldura();
+									long pesquisa;
+									
+									in.nextLine();//Limpar buffer
+									System.out.println("Exibir informações de um Cliente");
+									
+									System.out.println("\nDigite o CPF do cliente: ");
+									pesquisa = in.nextLong();
+									
+									Cliente busca = null;
+									busca = fachada.buscarCliente(pesquisa);
+									
+									if(busca != null){
+										System.out.println("Informações gerais: ");
+										System.out.println(busca.toString());
+									}else{
+										System.out.println("Cliente não encontrado!");
+									}
+									break;
+									
+							case 3:
+									this.moldura();
+									in.nextLine();//Limpar buffer
+									System.out.println("Remoção de Clientes");
+									
+									System.out.println("Digite o CPF do cliente a ser removido: ");
+									pesquisa = in.nextLong();
+									
+									Cliente apaga = null;
+									apaga = fachada.buscarCliente(pesquisa);
+									
+									if(apaga != null){
+										System.out.println("Deseja realmente excluir " 
+															+apaga.getNome() + "?\n"
+															+ "1 - Sim "
+															+ " 2 - Não");
+										
+										int decisao = in.nextInt();
+										
+										if(decisao == 1){
+											fachada.removerCliente(apaga.getCpf());
+											System.out.println("Cliente removido");
+										}else{
+											System.out.println("Cliente não removido!");
+										}
+									}
+								
+									break;
+									
+							case 4: 
+									this.moldura();
+									
+									in.nextLine();//Limpa buffer
+									System.out.println("Atualização de informações de um Cliente");
+									
+									System.out.println("Digite o CPF do cliente a ser editado: ");
+									pesquisa = in.nextLong();
+									
+									in.nextLine();//Limpar buffer
+									
+									Cliente edita = null;
+									edita = fachada.buscarCliente(pesquisa);
+									
+									if(edita != null){
+										System.out.println("Insira os novos dados abaixo: ");
+										
+										System.out.println("Nome: ");
+										String nomeCliente = in.nextLine();
+										
+										System.out.println("CPF: ");
+										long cpfCliente = in.nextLong();
+										
+										in.nextLine();//Limpar buffer
+										
+										System.out.println("Endereço: ");
+										String enderecoCliente = in.nextLine();
+										
+										System.out.println("Telefone: ");
+									    long telefoneCliente = in.nextLong();
+									    
+									    in.nextLine();
+									    
+									    System.out.println("Número de Cadastro: ");
+									    int numCadastroCliente = in.nextInt();
+									    
+									    in.nextLine();
+										
+										fachada.atualizarCliente(nomeCliente, cpfCliente, enderecoCliente,
+												telefoneCliente, numCadastroCliente);
+										System.out.println("Dados atualizados!");
+									}else{
+										System.out.println("Cliente não encontrado.");
+									}
+									
+									break;
+							case 5:
+									System.out.println("Retornando ao menu...");
+									in.nextLine();//Limpar buffer
+									operadorAuxiliar= 5;
+						}
+					}
 		}
 
 		}while(operacao != 5);

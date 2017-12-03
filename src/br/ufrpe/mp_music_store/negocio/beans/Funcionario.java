@@ -6,7 +6,7 @@ public class Funcionario extends Pessoa{
 	private int numContrato;
 	
 	//Construtor
-	public Funcionario(String nome, int cpf, String endereco,
+	public Funcionario(String nome, long cpf, String endereco,
 			int telefone, float salario, int numContrato) {
 		super(nome, cpf, endereco, telefone);
 		this.salario = salario;
