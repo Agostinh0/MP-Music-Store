@@ -28,14 +28,14 @@ public class CadastroFuncionarios {
 		}
 	}
 	
-	public Funcionario buscarFuncionario(int cpf) {
+	public Funcionario buscarFuncionario(long cpf) {
 		if(cpf == 0) {
 			//return error message
 		}
 		return this.repositorio.buscar(cpf);
 	}
 	
-	public void atualizar(String nome, int cpf, String endereco, int tel, float salario, 
+	public void atualizar(String nome, long cpf, String endereco, long tel, float salario, 
 			int numContrato){
 		if(cpf == 0){
 			//error message
@@ -44,7 +44,7 @@ public class CadastroFuncionarios {
 		}
 	}
 	
-	public void removerFuncionario(int cpf) {
+	public void removerFuncionario(long cpf) {
 		if(cpf == 0) {
 			//message error
 		}

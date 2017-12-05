@@ -7,7 +7,7 @@ public class Funcionario extends Pessoa{
 	
 	//Construtor
 	public Funcionario(String nome, long cpf, String endereco,
-			int telefone, float salario, int numContrato) {
+			long telefone, float salario, int numContrato) {
 		super(nome, cpf, endereco, telefone);
 		this.salario = salario;
 		this.numContrato = numContrato;
@@ -30,5 +30,13 @@ public class Funcionario extends Pessoa{
 		this.numContrato = numContrato;
 	}
 	
-	
+	public String toString(){
+		String texto = "\nNome: " + this.getNome();
+		texto += "\nCPF: " + this.getCpf();
+		texto += "\nEndereço: " + this.getEndereco();
+		texto += "\nTelefone: " + this.getTelefone();
+		texto += "\nSalário: " + this.getSalario();
+		texto += "\nNúmero de contrato: " + this.getNumContrato();
+		return texto;
+	}
 }

@@ -49,16 +49,16 @@ public class Fachada {
 		this.cadastroFuncionarios.adicionaFuncionario(f);
 	}
 	
-	public Funcionario buscarFuncionario(int cpf) {
+	public Funcionario buscarFuncionario(long cpf) {
 		return this.cadastroFuncionarios.buscarFuncionario(cpf);
 	}
 	
-	public void atualizarFuncionario(String nome, int cpf, String endereco, int tel, float salario,
+	public void atualizarFuncionario(String nome, long cpfFuncionario, String endereco, long telefoneFuncionario, float salario,
 			int numContrato){
-		this.cadastroFuncionarios.atualizar(nome, cpf, endereco, tel, salario, numContrato);
+		this.cadastroFuncionarios.atualizar(nome, cpfFuncionario, endereco, telefoneFuncionario, salario, numContrato);
 	}
 	
-	public void removerFuncionario(int cpf) {
+	public void removerFuncionario(long cpf) {
 		this.cadastroFuncionarios.removerFuncionario(cpf);
 	}
 	
