@@ -31,14 +31,14 @@ public class RepositorioFuncionarios {
 		}
 	}
 	
-	public void cadastrar(String nome, int cpf, String endereco, int tel, float salario, 
+	public void cadastrar(String nome, long cpf, String endereco, long tel, float salario, 
 			int numContrato){
 		Funcionario f = new Funcionario(nome, cpf, endereco, tel, salario, numContrato);
 		this.cadastrar(f);
 	}
 	
 	//Buscar funcionário por cpf
-	public Funcionario buscar(int cpf){
+	public Funcionario buscar(long cpf){
 		int i = this.procurarIndice(cpf);
 		Funcionario resultado = null;
 		if(i != this.proxima){
@@ -49,7 +49,7 @@ public class RepositorioFuncionarios {
 	}
 	
 	//Buscar índice
-	public int procurarIndice(int cpf){
+	public int procurarIndice(long cpf){
 		int i = 0;
 		boolean achou = false;
 		
@@ -75,7 +75,7 @@ public class RepositorioFuncionarios {
 	}
 	
 	//Atualizar informações do CD
-		public void atualizar(String nome, int cpf, String endereco, int tel, float salario, 
+		public void atualizar(String nome, long cpf, String endereco, long tel, float salario, 
 				int numContrato){
 			int i = procurarIndice(cpf);
 			
@@ -91,7 +91,7 @@ public class RepositorioFuncionarios {
 		}
 	
 	//Remover do array de funcionários
-	public void remover(int cpf){
+	public void remover(long cpf){
 		int i = this.procurarIndice(cpf);
 		if(i != this.proxima){
 			this.funcionario[i] = this.funcionario[this.proxima - 1];

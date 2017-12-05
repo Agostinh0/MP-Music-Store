@@ -330,9 +330,179 @@ public class Menu {
 									operadorAuxiliar= 5;
 						}
 					}
+			case 3 : 
+					this.moldura();
+					operadorAuxiliar = 0;
+					
+					while(operadorAuxiliar != 5){
+						System.out.println("Menu de Funcionários\n");
+						System.out.println("Escolha uma operação: \n\n");
+						System.out.println("1 - Cadastrar\n"
+											+ "2 - Pesquisar\n"
+						                    + "3 - Remover\n"
+											+ "4 - Editar\n"
+						                    + "5 - Sair\n");
+						
+						int op = in.nextInt();
+						
+						switch(op){
+							
+						case 1: 
+							this.moldura();
+							boolean realizado = false;
+							
+							do{
+							in.nextLine();//Limpar buffer
+							System.out.println("Nome do funcionário: ");
+							String nomeFuncionario = in.nextLine();
+							
+							System.out.println("CPF do funcionário: ");
+							long cpfFuncionario = in.nextLong();
+							
+							in.nextLine();//Limpar buffer
+							
+							System.out.println("Endereço do funcionário: ");
+							String enderecoFuncionario = in.nextLine();
+							
+							System.out.println("Telefone para contato: ");
+							long telefoneFuncionario = in.nextLong();
+							
+							in.nextLine();//Limpar buffer
+							
+							System.out.println("Defina o salário do funcionário: ");
+							float salarioFuncionario = in.nextFloat();
+							
+							in.nextLine();//Limpar buffer
+							
+							System.out.println("Defina um número de contrato(4 dígitos)");
+							int numContratoFuncionario = in.nextInt();
+							
+							in.nextLine();//Limpar buffer
+							
+							Funcionario funcionario = new Funcionario(nomeFuncionario, cpfFuncionario, enderecoFuncionario,
+									telefoneFuncionario, salarioFuncionario, numContratoFuncionario);
+							
+							fachada.adicionarFuncionario(funcionario);
+							realizado = true;
+							System.out.println("Funcionario cadastrado com sucesso!");
+				
+							}while(realizado == false);
+							
+							break;
+							
+						case 2: 
+								this.moldura();
+								long pesquisa;
+								
+								in.nextLine();//Limpar buffer
+								System.out.println("Exibir informações de um funcionário");
+								
+								System.out.println("Digite o CPF do funcionário: ");
+								pesquisa = in.nextLong();
+								
+								Funcionario busca = null;
+								busca = fachada.buscarFuncionario(pesquisa);
+								
+								if(busca != null){
+									System.out.println("Informações gerais: ");
+									System.out.println(busca.toString());
+								}else{
+									System.out.println("Funcionário não encontrado!");
+								}
+								
+								break;
+								
+						case 3 : 
+								this.moldura();
+								in.nextLine();//Limpar buffer
+								System.out.println("Remoção de Funcionários");
+								
+								System.out.println("Digite o CPF do funcionário a ser removido: ");
+								pesquisa = in.nextLong();
+								
+							    Funcionario apaga = null;
+								apaga = fachada.buscarFuncionario(pesquisa);
+								
+								if(apaga != null){
+									System.out.println("Deseja realmente excluir " 
+														+apaga.getNome() + "?\n"
+														+ "1 - Sim "
+														+ " 2 - Não");
+									
+									int decisao = in.nextInt();
+									
+									if(decisao == 1){
+										fachada.removerFuncionario(apaga.getCpf());
+										System.out.println("Funcionário removido");
+									}else{
+										System.out.println("Funcionário não removido!");
+									}
+								}
+							
+								break;
+								
+						case 4 : 
+								this.moldura();
+								
+								in.nextLine();//Limpa buffer
+								System.out.println("Atualização de informações de um funcionário");
+								
+								System.out.println("Digite o CPF do funcionário a ser editado: ");
+								pesquisa = in.nextLong();
+								
+								in.nextLine();//Limpar buffer
+								
+								Funcionario edita = null;
+								edita = fachada.buscarFuncionario(pesquisa);
+								
+								if(edita != null){
+									System.out.println("Insira os novos dados abaixo: ");
+									
+									System.out.println("Nome: ");
+									String nomeFuncionario = in.nextLine();
+									
+									System.out.println("CPF: ");
+									long cpfFuncionario = in.nextLong();
+									
+									in.nextLine();//Limpar buffer
+									
+									System.out.println("Endereço: ");
+									String enderecoFuncionario = in.nextLine();
+									
+									System.out.println("Telefone: ");
+								    long telefoneFuncionario = in.nextLong();
+								    
+								    in.nextLine();
+								    
+								    System.out.println("Salário: ");
+								    float salarioFuncionario = in.nextFloat();
+								    
+								    in.nextLine();
+								    
+								    System.out.println("Número de Contrato (4 dígitos): ");
+								    int numContratoFuncionario = in.nextInt();
+								    
+								    in.nextLine();
+									
+									fachada.atualizarFuncionario(nomeFuncionario, cpfFuncionario, enderecoFuncionario,
+											telefoneFuncionario, salarioFuncionario, numContratoFuncionario);
+									System.out.println("Dados atualizados!");
+								}else{
+									System.out.println("Funcionário não encontrado.");
+								}
+								
+								break;
+					case 5:
+							System.out.println("Retornando ao menu...");
+							in.nextLine();//Limpar buffer
+							operadorAuxiliar= 5;
+						}
+					}
+					
+			case 4 : 
+						System.out.println("Obrigado por usar nosso sistema.");
 		}
 
-		}while(operacao != 5);
-		//Ainda a implementar 
+		}while(operacao != 4);
 	}
 }
