@@ -6,6 +6,7 @@ public class Fachada {
 	private CadastroClientes cadastroClientes;
 	private CadastroFuncionarios cadastroFuncionarios;
 	private CatalogoCds cadastroCds;
+	private RegistroVendas registroVendas;
 	private static Fachada instance;
 	
 	
@@ -13,6 +14,7 @@ public class Fachada {
 		this.cadastroClientes = CadastroClientes.getInstance();
 		this.cadastroFuncionarios = CadastroFuncionarios.getInstance();
 		this.cadastroCds = CatalogoCds.getInstance();
+		this.registroVendas = RegistroVendas.getInstance();
 	}
 	
 	public static Fachada getInstance() {
@@ -85,5 +87,22 @@ public class Fachada {
 	
 	public void atualizarCd(String nome, int anoLancamento, String artista, float preco){
 		this.cadastroCds.atualizarCds(nome, anoLancamento, artista, preco);
+	}
+	
+	/* Vendas */
+	public void registrarVenda(Venda venda){
+		this.registroVendas.registrarVenda(venda);
+	}
+	
+	public Venda buscarVenda(long codigo){
+		return this.registroVendas.buscarVenda(codigo);
+	}
+	
+	public void removerVenda(long codigo){
+		this.registroVendas.remover(codigo);
+	}
+	
+	public boolean existeVenda(long codigo){
+		return this.registroVendas.existeVenda(codigo);
 	}
 }

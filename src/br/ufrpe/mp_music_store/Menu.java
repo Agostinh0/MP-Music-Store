@@ -5,6 +5,7 @@ import br.ufrpe.mp_music_store.negocio.Fachada;
 import br.ufrpe.mp_music_store.negocio.beans.Cd;
 import br.ufrpe.mp_music_store.negocio.beans.Cliente;
 import br.ufrpe.mp_music_store.negocio.beans.Funcionario;
+import br.ufrpe.mp_music_store.negocio.beans.Venda;
 
 public class Menu {
 	
@@ -24,7 +25,8 @@ public class Menu {
 		System.out.println("1 - CD's\n"
 							+ "2 - Clientes\n"
 							+ "3 - Funcionários\n"
-							+ "4 - Sair\n");
+							+ "4 - Vendas\n"
+							+ "5 - Sair\n");
 		
 		operacao = in.nextInt();
 		
@@ -500,9 +502,123 @@ public class Menu {
 					}
 					
 			case 4 : 
-						System.out.println("Obrigado por usar nosso sistema.");
+					this.moldura();
+					operadorAuxiliar = 0;
+					
+					while(operadorAuxiliar != 4){
+						System.out.println("Menu de vendas\n");
+						System.out.println("Escolha uma operação: \n\n");
+						System.out.println("1 - Registrar venda"
+											+ "\n2 - Buscar venda nos registros"
+											+ "\n3 - Remover dos registros"
+											+ "\n4 - Sair");
+						
+						int op = in.nextInt();
+						
+						switch(op){
+							
+							case 1:
+								
+									this.moldura();
+									boolean realizado = false;
+									
+									in.nextLine();//Limpar buffer
+									
+									do{
+										
+										Cliente buscaCliente = null;
+										
+										do{
+											
+										System.out.println("Digite as informações da venda: ");
+										System.out.println("\nDigite o CPF do cliente que está comprando: ");
+										long pesquisaCliente = in.nextLong();
+										
+										buscaCliente = fachada.buscarCliente(pesquisaCliente);
+										
+										}while(buscaCliente == null);
+										
+										Cd buscaCd = null;
+										in.nextLine();//Limpar buffer
+										
+										do{
+											
+										System.out.println("Digite o título do CD a ser vendido: ");
+										String pesquisaCd = in.nextLine();
+										
+										buscaCd = fachada.buscarCd(pesquisaCd);
+											
+										}while(buscaCd == null);
+										
+										System.out.println("Defina um código para representar esta venda: ");
+										long codigoVenda = in.nextLong();
+										
+										Venda venda = new Venda(buscaCliente, buscaCd, codigoVenda);
+										fachada.registrarVenda(venda);
+										System.out.println("Venda registrada! Código da venda: " + venda.getCodigoVenda());
+										realizado = true;
+										
+									}while(realizado == false);
+									
+									break;
+							case 2: 
+									this.moldura();
+									long pesquisa;
+									
+									in.nextLine();//Limpar buffer
+									System.out.println("Buscar informções sobre uma venda");
+									System.out.println("Digite o código da venda: ");
+									pesquisa = in.nextLong();
+									
+									Venda busca = null;
+									busca = fachada.buscarVenda(pesquisa);
+									
+									if(busca != null){
+										System.out.println("Informações gerais: ");
+										System.out.println(busca.toString());
+									}else{
+										System.out.println("Venda não encontrada!");
+									}
+									
+									break;
+							
+							case 3:
+									this.moldura();
+									in.nextLine();//Limpar buffer
+									System.out.println("Remoção de vendas do histórico");
+									
+									System.out.println("Digite o código da venda a ser removida: ");
+									pesquisa = in.nextLong();
+									
+								    Venda apaga = null;
+									apaga = fachada.buscarVenda(pesquisa);
+									
+									if(apaga != null){
+										System.out.println("Deseja realmente excluir " 
+															+apaga.getCodigoVenda() + "?\n"
+															+ "1 - Sim "
+															+ " 2 - Não");
+										
+										int decisao = in.nextInt();
+										
+										if(decisao == 1){
+											fachada.removerVenda(apaga.getCodigoVenda());
+											System.out.println("Venda removida do histórico");
+										}else{
+											System.out.println("Venda não removida!");
+										}
+									}
+								
+									break;
+							case 4 : 
+									System.out.println("Retornando ao menu...");
+									in.nextLine();//Limpar buffer
+									operadorAuxiliar = 4;
+						}
+					}
+			case 5: System.out.println("Obrigado por usar nosso sistema.");
 		}
 
-		}while(operacao != 4);
+		}while(operacao != 5);
 	}
 }

@@ -51,7 +51,7 @@ public class Cd {
 	
 	//Método toString
 	public String toString(){
-		String texto = "Título: " + this.getTitulo();
+		String texto = "\nTítulo: " + this.getTitulo();
 		texto += "\nAno de Lançamento: " + this.getAnoLancamento();
 		texto += "\nArtista: " + this.getArtista();
 		texto += "\nPreço : R$" + this.getPreco();
