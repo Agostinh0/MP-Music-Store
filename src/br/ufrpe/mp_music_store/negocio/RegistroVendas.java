@@ -1,5 +1,9 @@
 package br.ufrpe.mp_music_store.negocio;
+
 import br.ufrpe.mp_music_store.dados.RepositorioVendas;
+import br.ufrpe.mp_music_store.exceptions.ErroRemoverException;
+import br.ufrpe.mp_music_store.exceptions.ObjectExistException;
+import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
 import br.ufrpe.mp_music_store.negocio.beans.Venda;
 
 public class RegistroVendas {
@@ -21,26 +25,34 @@ public class RegistroVendas {
 	}
 	
 	//Registrar venda
-	public void registrarVenda(Venda venda){
+	public void registrarVenda(Venda venda) throws ObjectExistException{
 		if(venda == null){
-			//error message
-		}else{
+			throw new IllegalArgumentException("Entrada Inválida.");
+		}
+		else if(this.repositorio.existe(venda.getCodigoVenda())) {
+			throw new ObjectExistException();
+		}
+		else{
 			repositorio.registrarVenda(venda);
 		}
 	}
 	
 	//Buscar venda
-	public Venda buscarVenda(long codigo){
+	public Venda buscarVenda(long codigo) throws ObjectNotExistException{
 		if(codigo == 0){
-			//error message
+			throw new IllegalArgumentException("Entrada Inválida.");
 		}
+		else if(!this.repositorio.existe(codigo)) {
+			throw new ObjectNotExistException();
+		}
+		
 		return this.repositorio.procurar(codigo);
 	}
 	
 	//Remover venda do histórico
-	public void remover(long codigo){
+	public void remover(long codigo) throws ObjectNotExistException, ErroRemoverException{
 		if(codigo == 0){
-			//error message
+			throw new IllegalArgumentException("Entrada Inválida.");
 		}else{
 			repositorio.remover(codigo);
 		}

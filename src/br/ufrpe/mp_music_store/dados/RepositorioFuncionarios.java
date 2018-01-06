@@ -1,7 +1,11 @@
 package br.ufrpe.mp_music_store.dados;
-import br.ufrpe.mp_music_store.negocio.beans.Funcionario;
 
-public class RepositorioFuncionarios {
+import br.ufrpe.mp_music_store.negocio.beans.Funcionario;
+import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
+import br.ufrpe.mp_music_store.exceptions.ErroAtualizarException;
+import br.ufrpe.mp_music_store.exceptions.ErroRemoverException;
+
+public class RepositorioFuncionarios implements IRepositorioFuncionarios{
 	
 	private Funcionario[] funcionario;
 	private int proxima;
@@ -38,11 +42,14 @@ public class RepositorioFuncionarios {
 	}
 	
 	//Buscar funcionário por cpf
-	public Funcionario buscar(long cpf){
+	public Funcionario buscar(long cpf) throws ObjectNotExistException{
 		int i = this.procurarIndice(cpf);
 		Funcionario resultado = null;
 		if(i != this.proxima){
 			resultado = this.funcionario[i];
+		}
+		else {
+			throw new ObjectNotExistException();
 		}
 		
 		return resultado;
@@ -64,7 +71,7 @@ public class RepositorioFuncionarios {
 	}
 	
 	//Verificar se funcionário existe
-	public boolean existe(int cpf){
+	public boolean existe(long cpf){
 		boolean existe = false;
 		int indice = this.procurarIndice(cpf);
 		if(indice != proxima){
@@ -75,30 +82,32 @@ public class RepositorioFuncionarios {
 	}
 	
 	//Atualizar informações do CD
-		public void atualizar(String nome, long cpf, String endereco, long tel, float salario, 
-				int numContrato){
-			int i = procurarIndice(cpf);
+		public void atualizar(long pesquisa, Funcionario f) throws ObjectNotExistException, ErroAtualizarException{
+			int i = procurarIndice(pesquisa);
 			
 			if(i >= 0){
-				this.funcionario[i].setNome(nome);
-				this.funcionario[i].setCpf(cpf);
-				this.funcionario[i].setEndereco(endereco);
-				this.funcionario[i].setTelefone(tel);
-				this.funcionario[i].setSalario(salario);
-				this.funcionario[i].setNumContrato(numContrato);
+				this.funcionario[i].setNome(f.getNome());
+				this.funcionario[i].setCpf(f.getCpf());
+				this.funcionario[i].setEndereco(f.getEndereco());
+				this.funcionario[i].setTelefone(f.getTelefone());
+				this.funcionario[i].setSalario(f.getSalario());
+				this.funcionario[i].setNumContrato(f.getNumContrato());
+			}
+			else {
+				throw new ErroAtualizarException();
 			}
 			
 		}
 	
 	//Remover do array de funcionários
-	public void remover(long cpf){
+	public void remover(long cpf) throws ObjectNotExistException, ErroRemoverException{
 		int i = this.procurarIndice(cpf);
 		if(i != this.proxima){
 			this.funcionario[i] = this.funcionario[this.proxima - 1];
 			this.funcionario[this.proxima] = null;
 			this.proxima = this.proxima - 1;
 		}else{
-			
+			throw new ErroRemoverException();
 		}
 	}
 	

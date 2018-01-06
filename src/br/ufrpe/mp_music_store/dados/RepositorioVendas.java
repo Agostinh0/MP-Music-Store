@@ -1,9 +1,12 @@
 package br.ufrpe.mp_music_store.dados;
+
 import br.ufrpe.mp_music_store.negocio.beans.Cliente;
 import br.ufrpe.mp_music_store.negocio.beans.Venda;
 import br.ufrpe.mp_music_store.negocio.beans.Cd;
+import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
+import br.ufrpe.mp_music_store.exceptions.ErroRemoverException;
 
-public class RepositorioVendas {
+public class RepositorioVendas implements IRepositorioVendas{
 	
 	private Venda[] vendas;
 	private int proxima;
@@ -40,13 +43,16 @@ public class RepositorioVendas {
 	}
 	
 	//Buscar venda
-	public Venda procurar(long codigo){
+	public Venda procurar(long codigo) throws ObjectNotExistException{
 		int i = this.procurarIndice(codigo);
 		Venda resultado = null;
 		
 		if(i != this.proxima){
 			resultado = this.vendas[i];
-		}	
+		}
+		else {
+			throw new ObjectNotExistException();
+		}
 		
 		return resultado;
 	}
@@ -79,7 +85,7 @@ public class RepositorioVendas {
 	}
 	
 	//Remover venda do histórico
-	public void remover(long codigo){
+	public void remover(long codigo) throws ObjectNotExistException, ErroRemoverException{
 		int i = this.procurarIndice(codigo);
 		
 		if(i != this.proxima){
@@ -87,7 +93,7 @@ public class RepositorioVendas {
 			this.vendas[this.proxima - 1] = null;
 			this.proxima = this.proxima - 1;
 		}else{
-			//return error message
+			throw new ErroRemoverException();
 		}
 	}
 	

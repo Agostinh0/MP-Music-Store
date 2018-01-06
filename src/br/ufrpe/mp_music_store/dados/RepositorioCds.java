@@ -1,7 +1,11 @@
 package br.ufrpe.mp_music_store.dados;
-import br.ufrpe.mp_music_store.negocio.beans.Cd;
 
-public class RepositorioCds {
+import br.ufrpe.mp_music_store.negocio.beans.Cd;
+import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
+import br.ufrpe.mp_music_store.exceptions.ErroAtualizarException;
+import br.ufrpe.mp_music_store.exceptions.ErroRemoverException;
+
+public class RepositorioCds implements IRepositorioCds{
 	
 	private Cd[] cd;
 	private int proxima;
@@ -37,11 +41,14 @@ public class RepositorioCds {
 	}
 	
 	//Buscar CD pelo título
-	public Cd procurar(String nome){
+	public Cd procurar(String nome) throws ObjectNotExistException{
 		int i = this.procurarIndice(nome);
 		Cd resultado = null;
 		if(i != this.proxima){
 			resultado = this.cd[i];
+		}
+		else {
+			throw new ObjectNotExistException();
 		}
 		
 		return resultado;
@@ -73,29 +80,31 @@ public class RepositorioCds {
 	}
 	
 	//Atualizar informações do CD
-	public void atualizar(String titulo, int anoLancamento, String artista, float preco){
-		int i = procurarIndice(titulo);
+	public void atualizar(String pesquisa, Cd c) throws ObjectNotExistException, ErroAtualizarException{
+		int i = procurarIndice(pesquisa);
 		
 		if(i >= 0){
-			this.cd[i].setTitulo(titulo);
-			this.cd[i].setAnoLancamento(anoLancamento);
-			this.cd[i].setArtista(artista);
-			this.cd[i].setPreco(preco);
+			this.cd[i].setTitulo(c.getTitulo());
+			this.cd[i].setAnoLancamento(c.getAnoLancamento());
+			this.cd[i].setArtista(c.getArtista());
+			this.cd[i].setPreco(c.getPreco());
+		}
+		else {
+			throw new ErroAtualizarException();
 		}
 		
 	}
 	
 	//Remover do array de CD's
-	public void remover(String nome){
+	public void remover(String nome) throws ObjectNotExistException, ErroRemoverException{
 		int i = this.procurarIndice(nome);
 		if(i != this.proxima){
 			this.cd[i] = this.cd[this.proxima - 1];
 			this.cd[this.proxima - 1] = null;
 			this.proxima = this.proxima - 1;
 		}else{
-			
+			throw new ErroRemoverException();
 		}
-	
 	}
 	
 	//Dobrar tamanho do array de CD's

@@ -5,7 +5,7 @@ public class Cd {
 	private String titulo;
 	private int anoLancamento;
 	private String artista;
-	private float preco;
+	private double preco;
 	
 	//Construtor
 	public Cd(String titulo, int anoLancamento, String artista, float preco) {
@@ -41,11 +41,11 @@ public class Cd {
 		this.artista = artista;
 	}
 	
-	public float getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 	
-	public void setPreco(float preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 	

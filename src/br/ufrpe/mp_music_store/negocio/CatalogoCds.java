@@ -1,6 +1,10 @@
 package br.ufrpe.mp_music_store.negocio;
 
 import br.ufrpe.mp_music_store.dados.RepositorioCds;
+import br.ufrpe.mp_music_store.exceptions.ErroAtualizarException;
+import br.ufrpe.mp_music_store.exceptions.ErroRemoverException;
+import br.ufrpe.mp_music_store.exceptions.ObjectExistException;
+import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
 import br.ufrpe.mp_music_store.negocio.beans.Cd;
 
 public class CatalogoCds {
@@ -19,36 +23,43 @@ public class CatalogoCds {
 		return instance;
 	}
 	
-	public void adicionaCds(Cd c) {
+	public void adicionaCds(Cd c) throws ObjectExistException{
 		if(c == null) {
-			//error message
+			throw new IllegalArgumentException("Entrada Inválida.");
+		}
+		else if(this.repositorio.existe(c.getTitulo())) {
+			throw new ObjectExistException();
 		}
 		else {
 			repositorio.cadastrar(c);
 		}
 	}
 	
-	public Cd buscarCds(String nome) {
+	public Cd buscarCds(String nome) throws ObjectNotExistException{
 		if(nome == null) {
-			//return error message
+			throw new IllegalArgumentException("Entrada Inválida.");
 		}
+		else if(!this.repositorio.existe(nome)) {
+			throw new ObjectNotExistException();
+		}
+		
 		return this.repositorio.procurar(nome);
 	}
 	
-	public void removerCds(String nome) {
-		if(nome == null) {
-			//message error
-		}
-		else {
-			repositorio.remover(nome);
+	public void atualizarCds(String pesquisa, Cd c) throws ObjectNotExistException, ErroAtualizarException{
+		if(c == null){
+			throw new IllegalArgumentException("Entrada inválida.");
+		}else{
+			repositorio.atualizar(pesquisa, c);
 		}
 	}
 	
-	public void atualizarCds(String nome, int anoLancamento, String artista, float preco){
-		if(nome == null){
-			//message error
-		}else {
-			repositorio.atualizar(nome, anoLancamento, artista, preco);
+	public void removerCds(String nome) throws ObjectNotExistException, ErroRemoverException{
+		if(nome == null) {
+			throw new IllegalArgumentException("Entrada Inválida.");
+		}
+		else {
+			repositorio.remover(nome);
 		}
 	}
 	

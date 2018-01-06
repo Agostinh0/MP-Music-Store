@@ -1,8 +1,12 @@
 package br.ufrpe.mp_music_store.negocio;
 
+import br.ufrpe.mp_music_store.exceptions.ErroAtualizarException;
+import br.ufrpe.mp_music_store.exceptions.ErroRemoverException;
+import br.ufrpe.mp_music_store.exceptions.ObjectExistException;
+import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
 import br.ufrpe.mp_music_store.negocio.beans.*;
 
-public class Fachada {
+public class Fachada implements IFachada{
 	private CadastroClientes cadastroClientes;
 	private CadastroFuncionarios cadastroFuncionarios;
 	private CatalogoCds cadastroCds;
@@ -26,20 +30,20 @@ public class Fachada {
 	}
 	
 	/* Clientes */
-	public void adicionarCliente(Cliente c) {
+	public void adicionarCliente(Cliente c) throws ObjectExistException{
 		this.cadastroClientes.adicionarCliente(c);
 	}
 	
-	public Cliente buscarCliente(long cpf) {
+	public Cliente buscarCliente(long cpf) throws ObjectNotExistException{
 		return this.cadastroClientes.buscarCliente(cpf);
 	}
 	
-	public void removerCliente(long cpf) {
+	public void removerCliente(long cpf) throws ObjectNotExistException, ErroRemoverException{
 		this.cadastroClientes.removerCliente(cpf);
 	}
 	
-	public void atualizarCliente(String nome, long cpfCliente, String endereco, long telefoneCliente, int numCadastro){
-		this.cadastroClientes.atualizarCliente(nome, cpfCliente, endereco, telefoneCliente, numCadastro);
+	public void atualizarCliente(long pesquisa, Cliente cliente) throws ObjectNotExistException, ErroAtualizarException{
+		this.cadastroClientes.atualizarCliente(pesquisa, cliente);
 	}
 	
 	public boolean existeCliente(long cpf) {
@@ -47,37 +51,36 @@ public class Fachada {
 	}
 	
 	/* Funcionários */
-	public void adicionarFuncionario(Funcionario f) {
+	public void adicionarFuncionario(Funcionario f) throws ObjectExistException{
 		this.cadastroFuncionarios.adicionaFuncionario(f);
 	}
 	
-	public Funcionario buscarFuncionario(long cpf) {
+	public Funcionario buscarFuncionario(long cpf) throws ObjectNotExistException{
 		return this.cadastroFuncionarios.buscarFuncionario(cpf);
 	}
 	
-	public void atualizarFuncionario(String nome, long cpfFuncionario, String endereco, long telefoneFuncionario, float salario,
-			int numContrato){
-		this.cadastroFuncionarios.atualizar(nome, cpfFuncionario, endereco, telefoneFuncionario, salario, numContrato);
+	public void atualizarFuncionario(long pesquisa, Funcionario f) throws ObjectNotExistException, ErroAtualizarException{
+		this.cadastroFuncionarios.atualizar(pesquisa, f);
 	}
 	
-	public void removerFuncionario(long cpf) {
+	public void removerFuncionario(long cpf) throws ObjectNotExistException, ErroRemoverException{
 		this.cadastroFuncionarios.removerFuncionario(cpf);
 	}
 	
-	public boolean existeFuncionario(int cpf) {
+	public boolean existeFuncionario(long cpf) {
 		return this.cadastroFuncionarios.existeFuncionario(cpf);
 	}
 	
 	/* CDs */
-	public void adicionarCd(Cd c) {
+	public void adicionarCd(Cd c) throws ObjectExistException{
 		this.cadastroCds.adicionaCds(c);
 	}
 	
-	public Cd buscarCd(String nome) {
+	public Cd buscarCd(String nome) throws ObjectNotExistException{
 		return this.cadastroCds.buscarCds(nome);
 	}
 	
-	public void removerCd(String nome) {
+	public void removerCd(String nome) throws ObjectNotExistException, ErroRemoverException{
 		this.cadastroCds.removerCds(nome);
 	}
 	
@@ -85,20 +88,20 @@ public class Fachada {
 		return this.cadastroCds.existeCd(titulo);
 	}
 	
-	public void atualizarCd(String nome, int anoLancamento, String artista, float preco){
-		this.cadastroCds.atualizarCds(nome, anoLancamento, artista, preco);
+	public void atualizarCd(String pesquisa, Cd c) throws ObjectNotExistException, ErroAtualizarException{
+		this.cadastroCds.atualizarCds(pesquisa, c);
 	}
 	
 	/* Vendas */
-	public void registrarVenda(Venda venda){
+	public void registrarVenda(Venda venda) throws ObjectExistException{
 		this.registroVendas.registrarVenda(venda);
 	}
 	
-	public Venda buscarVenda(long codigo){
+	public Venda buscarVenda(long codigo) throws ObjectNotExistException{
 		return this.registroVendas.buscarVenda(codigo);
 	}
 	
-	public void removerVenda(long codigo){
+	public void removerVenda(long codigo) throws ObjectNotExistException, ErroRemoverException{
 		this.registroVendas.remover(codigo);
 	}
 	
