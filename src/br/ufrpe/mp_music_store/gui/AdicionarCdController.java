@@ -28,7 +28,7 @@ public class AdicionarCdController implements Initializable {
 	private TextField tituloCd, artistaCd, precoCd;
 	@FXML
 	private DatePicker anoLancamentoCd;
-	
+
 
 	@FXML
 	public void enviarCd(ActionEvent event){
@@ -53,7 +53,6 @@ public class AdicionarCdController implements Initializable {
 				try{
 					Stage stage = (Stage) botaoCadastrar.getScene().getWindow();
 					Fachada.getInstance().adicionarCd(cd);
-					Fachada.getInstance().salvarArquivoCds();
 					System.out.println("Cadastrado!");
 					stage.close();
 

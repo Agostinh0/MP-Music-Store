@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.mp_music_store.gui.AdicionarCdController">
-   <bottom>
+   <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="tituloCd" layoutX="125.0" layoutY="98.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite o título..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
-            <Text fill="WHITE" layoutX="77.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar CD" textAlignment="CENTER">
+            <Text fill="WHITE" layoutX="77.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Cd" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="29.0" />
                </font>
@@ -57,5 +57,5 @@
             </Label>
          </children>
       </AnchorPane>
-   </bottom>
+   </center>
 </BorderPane>

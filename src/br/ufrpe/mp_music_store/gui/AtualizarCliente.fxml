@@ -7,25 +7,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.mp_music_store.gui.AtualizarClienteController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="163.0" layoutY="98.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite um nome..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="newNomeCliente" layoutX="163.0" layoutY="98.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite um nome..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
             <Text fill="WHITE" layoutX="75.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Atualizar Clientes" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="29.0" />
                </font>
             </Text>
-            <Button layoutX="459.0" layoutY="338.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 15;" text="Voltar" textFill="WHITE">
+            <Button fx:id="backBttn" layoutX="459.0" layoutY="338.0" mnemonicParsing="false" onAction="#voltarInicio" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 15;" text="Voltar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TextField layoutX="163.0" layoutY="276.0" prefHeight="25.0" prefWidth="161.0" promptText="Cadastro..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
-            <TextField layoutX="163.0" layoutY="233.0" prefHeight="25.0" prefWidth="110.0" promptText="Telefone..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
-            <TextField layoutX="163.0" layoutY="188.0" prefHeight="25.0" prefWidth="110.0" promptText="Digite um cpf..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
-            <TextField layoutX="163.0" layoutY="143.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite um endereço..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="newCadastroCliente" layoutX="163.0" layoutY="276.0" prefHeight="25.0" prefWidth="161.0" promptText="Cadastro..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="newTelefoneCliente" layoutX="163.0" layoutY="233.0" prefHeight="25.0" prefWidth="110.0" promptText="Telefone..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="newCpfCliente" layoutX="163.0" layoutY="188.0" prefHeight="25.0" prefWidth="110.0" promptText="Digite um cpf..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="newEnderecoCliente" layoutX="163.0" layoutY="143.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite um endereço..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
             <Label layoutX="62.0" layoutY="101.0" text="Novo Nome:" textFill="#949494">
                <font>
                   <Font size="13.0" />
@@ -56,7 +56,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <RadioButton layoutX="360.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Premium" textFill="WHITE">
+            <RadioButton fx:id="newRadBttn" layoutX="360.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Premium" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -69,11 +69,21 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </RadioButton>
-            <Button layoutX="369.0" layoutY="338.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Atualizar" textFill="WHITE">
+            <Button fx:id="botaoAtualizar" layoutX="369.0" layoutY="338.0" mnemonicParsing="false" onAction="#enviarCliente" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Alterar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <Label fx:id="aviso" layoutX="64.0" layoutY="318.0" prefHeight="20.0" prefWidth="101.0" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="warnCpf" layoutX="61.0" layoutY="211.0" prefHeight="20.0" prefWidth="76.0" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

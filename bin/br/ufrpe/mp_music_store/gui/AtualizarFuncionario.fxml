@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.mp_music_store.gui.AtualizarFuncionarioController">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="newNomeFunc" layoutX="161.0" layoutY="91.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite um nome..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <Text fill="WHITE" layoutX="77.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Atualizar Funcionários" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+            </Text>
+            <Button fx:id="backBttn" layoutX="459.0" layoutY="338.0" mnemonicParsing="false" onAction="#voltarInicio" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: transparent; -fx-border-radius: 15; -fx-border-color: white;" text="Voltar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <TextField fx:id="newContratoFunc" layoutX="161.0" layoutY="280.0" prefHeight="25.0" prefWidth="161.0" promptText="Contrato..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="newTelefoneFunc" layoutX="381.0" layoutY="182.0" prefHeight="25.0" prefWidth="110.0" promptText="Telefone..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="newCpfFunc" layoutX="161.0" layoutY="181.0" prefHeight="25.0" prefWidth="110.0" promptText="Digite um cpf..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="newEnderecoFunc" layoutX="161.0" layoutY="136.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite um endereço..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <Label layoutX="62.0" layoutY="94.0" text="Novo Nome:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="62.0" layoutY="139.0" text="Novo Endereço:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="63.0" layoutY="184.0" text="Novo CPF:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="286.0" layoutY="184.0" text="Novo Telefone:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="63.0" layoutY="283.0" text="N° de Contrato:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Button fx:id="botaoAtualizar" layoutX="370.0" layoutY="338.0" mnemonicParsing="false" onAction="#enviarFuncionario" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Atualizar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="aviso" layoutX="65.0" layoutY="318.0" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="warnCpf" layoutX="74.0" layoutY="207.0" prefHeight="20.0" prefWidth="0.0" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newSalarioFunc" layoutX="161.0" layoutY="237.0" prefHeight="25.0" prefWidth="161.0" promptText="Salário..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <Label layoutX="63.0" layoutY="240.0" text="Novo Salário:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -4,8 +4,8 @@ import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-import br.ufrpe.mp_music_store.dados.RepositorioCds;
 import br.ufrpe.mp_music_store.exceptions.ErroAtualizarException;
+import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
 import br.ufrpe.mp_music_store.negocio.Fachada;
 import br.ufrpe.mp_music_store.negocio.beans.Cd;
 import javafx.event.ActionEvent;
@@ -20,60 +20,75 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class AtualizarCdController implements Initializable{
-	
-	@FXML	private Button botaoAlterar, backBttn;
-	@FXML	private Label aviso;
-	@FXML	private TextField novoTituloCd, novoArtistaCd, novoPrecoCd;
-	@FXML	private DatePicker novoAnoLancamentoCd;
-	String cdAntigo;
-	
+	@FXML 
+	private Button botaoAtualizar, backBttn;
 	@FXML
-	public void atualizarCd(ActionEvent action){
-		String novoTitulo, novoAnoLancamento, novoArtista, novoPreco;
-		
-		novoTitulo = this.novoTituloCd.getText();
-		novoArtista = this.novoArtistaCd.getText();
-		novoPreco = this.novoPrecoCd.getText();
-		
-		if(!novoTitulo.equals("") && this.novoAnoLancamentoCd.getValue() != null && !novoArtista.equals("")
-				&& !novoPreco.equals("")){
-			
-			novoAnoLancamento = this.novoAnoLancamentoCd.getValue().format(DateTimeFormatter.ofPattern("yyyy"));
-			
-			try{
-				int novoAno = Integer.parseInt(novoAnoLancamento);
-				float newPrice = Float.parseFloat(novoPreco);
-				
-				Cd edita = new Cd(novoTitulo, novoAno, novoArtista, newPrice);
-				
-				try{
-					Stage stage = (Stage) botaoAlterar.getScene().getWindow();
-					RepositorioCds.getInstance().atualizar(cdAntigo, edita);
-					Fachada.getInstance().salvarArquivoCds();
-					System.out.println("CD atualizado!");
+	private Label aviso;
+	@FXML 
+	private TextField newTitulo, newArtista, newPreco;
+	@FXML
+	private DatePicker newAnoLancamento;
+
+	private Cd cdEdit;
+
+	@FXML
+	public void enviarCd(ActionEvent event){
+		String titulo, anoLancamento, artista, preco_Cd;
+
+		titulo = newTitulo.getText();
+		artista = newArtista.getText();
+		preco_Cd = newPreco.getText();
+
+
+		if(!titulo.equals("") && newAnoLancamento.getValue() != null && !artista.equals("")
+				&& !preco_Cd.equals("")){
+
+			anoLancamento = newAnoLancamento.getValue().format(DateTimeFormatter.ofPattern("yyyy"));
+
+			try {
+				int ano = Integer.parseInt(anoLancamento);
+				float preco = Float.parseFloat(preco_Cd);
+
+				Cd cd = new Cd(titulo, ano, artista, preco);
+
+				try {
+					Stage stage = (Stage) botaoAtualizar.getScene().getWindow();
+					Fachada.getInstance().atualizarCd(this.cdEdit.getTitulo(), cd);
 					stage.close();
-				}catch(ErroAtualizarException e){
+
+				}catch (ErroAtualizarException e) {
+					e.printStackTrace();
+
+				} catch (ObjectNotExistException e) {
 					Alert alert = new Alert(AlertType.WARNING);
-					alert.setTitle("Warning!");
-					alert.setContentText("Erro ao atualizar!");
+					alert.setTitle("Warning");
+					alert.setHeaderText("Erro ao atualizar!");
+					alert.setContentText("CD não existe!");
 					alert.showAndWait();
 				}
-			}catch(Exception e){
+
+			}catch(Exception e) {
 				System.out.println(e.getMessage());
 			}
+
+
 		}else{
-			System.out.println("Preencha todos os campos!");
+			aviso.setText("Preencha todos os campos!");
 		}
+
 	}
-	
-	public void voltarInicio(ActionEvent event){
+
+	public void voltarInicio(ActionEvent event) {
 		Stage stage = (Stage) backBttn.getScene().getWindow();
 		stage.close();
 	}
 
+	public void setCdEdit(Cd c) {
+		this.cdEdit = c;
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
+
 	}
 }
