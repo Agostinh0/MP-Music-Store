@@ -5,22 +5,12 @@ import br.ufrpe.mp_music_store.negocio.beans.Venda;
 import br.ufrpe.mp_music_store.negocio.beans.Cd;
 import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 import br.ufrpe.mp_music_store.exceptions.ErroRemoverException;
 
-public class RepositorioVendas implements IRepositorioVendas, Serializable{
+public class RepositorioVendas implements IRepositorioVendas{
 
-	private static final long serialVersionUID = 3963205256239316184L;
 	private Venda[] vendas;
 	private int proxima;
 	private static RepositorioVendas instance;
@@ -35,7 +25,7 @@ public class RepositorioVendas implements IRepositorioVendas, Serializable{
 	//Singleton
 	public static RepositorioVendas getInstance(){
 		if(instance == null){
-			instance = RepositorioVendas.lerArquivo();
+			instance = new RepositorioVendas(100);
 		}
 
 		return instance;
@@ -52,8 +42,8 @@ public class RepositorioVendas implements IRepositorioVendas, Serializable{
 		}
 	}
 
-	public void registrarVenda(Cliente cliente, Cd cdVendido, long codigoVenda, LocalDate dataVenda, LocalTime horaVenda){
-		Venda venda = new Venda(cliente, cdVendido, codigoVenda, dataVenda, horaVenda);
+	public void registrarVenda(Cliente cliente, Cd cdVendido, long codigoVenda){
+		Venda venda = new Venda(cliente, cdVendido, codigoVenda);
 		this.registrarVenda(venda);
 	}
 
@@ -104,6 +94,7 @@ public class RepositorioVendas implements IRepositorioVendas, Serializable{
 		int i = this.procurarIndice(codigo);
 
 		if(i != this.proxima){
+			this.listaVendas.remove(i);
 			this.vendas[i] = this.vendas[this.proxima - 1];
 			this.vendas[this.proxima - 1] = null;
 			this.proxima = this.proxima - 1;
@@ -127,71 +118,5 @@ public class RepositorioVendas implements IRepositorioVendas, Serializable{
 	public ArrayList<Venda> listar() {
 		return this.listaVendas;
 	}
-	
-	//Arquivos
-	private static RepositorioVendas lerArquivo(){
-		RepositorioVendas instanciaLocal = null;
-		
-		File arquivo = new File("repositorioCds.dat");
-		
-		FileInputStream fis = null;
-		ObjectInputStream ois = null;
-		
-		try{
-			
-			fis = new FileInputStream(arquivo);
-			ois = new ObjectInputStream(fis);
-			
-			Object o = ois.readObject();
-		
-			instanciaLocal = (RepositorioVendas) o;
-			
-		}catch(Exception e){
-			instanciaLocal = new RepositorioVendas(100);
-		
-		}finally{
-			if(ois != null){
-				try{
-					ois.close();
-				}catch(IOException e){
-					
-				}
-			}
-		}
-		
-		return instanciaLocal;
-		
-	}
-	
-	public void salvarArquivo(){
-		if(instance == null){
-			return;
-		}
-		
-		File arquivo = new File("repositorioVendas.dat");
-		
-		FileOutputStream fos = null;
-		ObjectOutputStream oos = null;
-		
-		try{
-			if(!arquivo.exists()){
-				arquivo.createNewFile();
-			}
-			
-			fos = new FileOutputStream(arquivo);
-			oos = new ObjectOutputStream(fos);
-			oos.writeObject(instance);
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-			if(oos != null){
-				try{
-					oos.close();
-				}catch(IOException e){
-					
-				}
-			}
-		}
-		
-	}
+
 }

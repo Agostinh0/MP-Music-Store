@@ -23,9 +23,9 @@ public class AdmMenu extends Application{
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
