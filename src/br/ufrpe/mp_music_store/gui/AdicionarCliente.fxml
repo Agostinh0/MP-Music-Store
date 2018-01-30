@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.mp_music_store.gui.AdicionarClienteController">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="nomeCliente" layoutX="125.0" layoutY="98.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite um nome..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <Text fill="WHITE" layoutX="77.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Clientes" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+            </Text>
+            <Button fx:id="backBttn" layoutX="459.0" layoutY="338.0" mnemonicParsing="false" onAction="#voltarInicio" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: transparent; -fx-border-radius: 15; -fx-border-color: white;" text="Voltar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <TextField fx:id="cadastroCliente" layoutX="165.0" layoutY="276.0" prefHeight="25.0" prefWidth="161.0" promptText="Cadastro..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="telefoneCliente" layoutX="125.0" layoutY="233.0" prefHeight="25.0" prefWidth="110.0" promptText="Telefone..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="cpfCliente" layoutX="125.0" layoutY="188.0" prefHeight="25.0" prefWidth="110.0" promptText="Digite um cpf..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="enderecoCliente" layoutX="125.0" layoutY="143.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite um endereço..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <Label layoutX="62.0" layoutY="101.0" text="Nome:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="61.0" layoutY="146.0" text="Endereço:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="63.0" layoutY="191.0" text="CPF:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="64.0" layoutY="236.0" text="Telefone:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="65.0" layoutY="279.0" text="N° de Cadastro:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="397.0" layoutY="188.0" text="Quer ser Premium?" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="radBttn1" layoutX="364.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Premium" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupinho" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="459.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-border-color: white; -fx-border-radius: 15;" text="Free" textFill="WHITE" toggleGroup="$grupinho">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </RadioButton>
+            <Button fx:id="botaoCadastrar" layoutX="370.0" layoutY="338.0" mnemonicParsing="false" onAction="#enviarCd" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Adicionar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="aviso" layoutX="65.0" layoutY="318.0" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="warnCpf" layoutX="125.0" layoutY="211.0" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="128.0" fitWidth="139.0" layoutX="435.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/temporary_Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

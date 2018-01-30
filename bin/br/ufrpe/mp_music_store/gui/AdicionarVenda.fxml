@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.mp_music_store.gui.AdicionarVendaController">
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" layoutX="77.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrar Venda" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+            </Text>
+            <TextField fx:id="cpfCliente" layoutX="77.0" layoutY="97.0" prefHeight="25.0" prefWidth="250.0" promptText="CPF..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="tituloCd" layoutX="77.0" layoutY="137.0" prefHeight="25.0" prefWidth="250.0" promptText="Título do CD..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <Label layoutX="23.0" layoutY="100.0" text="CPF:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="140.0" text="Título:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="181.0" text="Data:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="301.0" text="Hora:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="16.0" layoutY="341.0" text="Minutos:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="horaVenda" layoutX="77.0" layoutY="298.0" prefHeight="25.0" prefWidth="107.0" promptText="Hora..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="minutoVenda" layoutX="77.0" layoutY="339.0" prefHeight="25.0" prefWidth="107.0" promptText="Minutos..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="codigoVenda" layoutX="460.0" layoutY="216.0" prefHeight="25.0" prefWidth="122.0" promptText="Código da venda..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <Label layoutX="393.0" layoutY="219.0" text="Código: " textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Button fx:id="adicionarVenda" layoutX="370.0" layoutY="338.0" mnemonicParsing="false" onAction="#enviarVenda" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Adicionar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="backBttn" layoutX="457.0" layoutY="338.0" mnemonicParsing="false" onAction="#voltarInicio" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: transparent; -fx-border-radius: 15; -fx-border-color: white;" text="Voltar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="128.0" fitWidth="139.0" layoutX="393.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/temporary_Logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="25.0" layoutY="219.0" prefHeight="19.0" prefWidth="32.0" text="Mês:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="dataVenda" layoutX="77.0" layoutY="178.0" prefHeight="25.0" prefWidth="107.0" promptText="Data..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="mesVenda" layoutX="77.0" layoutY="216.0" prefHeight="25.0" prefWidth="107.0" promptText="Mês" style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="anoVenda" layoutX="77.0" layoutY="257.0" prefHeight="25.0" prefWidth="107.0" promptText="Ano..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <Label layoutX="25.0" layoutY="260.0" prefHeight="19.0" prefWidth="32.0" text="Ano:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

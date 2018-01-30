@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainScreen" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.mp_music_store.gui.AdmMenuController">
+   <left>
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="400.0" prefWidth="153.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="156.0" style="-fx-background-color: black;">
+               <children>
+                  <Button fx:id="cdButton" layoutX="8.0" layoutY="47.0" mnemonicParsing="false" onAction="#admOptionsButtonAction" style="-fx-background-color: black;" text="CD's" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="clientButton" layoutX="8.0" layoutY="76.0" mnemonicParsing="false" onAction="#admOptionsButtonAction" style="-fx-background-color: black;" text="Clientes" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="funcButton" layoutX="8.0" layoutY="105.0" mnemonicParsing="false" onAction="#admOptionsButtonAction" style="-fx-background-color: black;" text="Funcionários" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="salesButton" layoutX="10.0" layoutY="134.0" mnemonicParsing="false" onAction="#admOptionsButtonAction" style="-fx-background-color: black;" text="Vendas" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Text fill="SPRINGGREEN" layoutX="15.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administração" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children></AnchorPane>
+        </content>
+      </ScrollPane>
+   </left>
+   <bottom>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="363.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DISPLAY SOM" />
+         </children></AnchorPane>
+   </bottom>
+</BorderPane>

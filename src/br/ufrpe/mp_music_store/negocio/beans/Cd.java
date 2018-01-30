@@ -1,12 +1,15 @@
 package br.ufrpe.mp_music_store.negocio.beans;
 
-public class Cd {
+import java.io.Serializable;
 
+public class Cd implements Serializable{
+
+	private static final long serialVersionUID = 3350453139452868726L;
 	private String titulo;
 	private int anoLancamento;
 	private String artista;
 	private double preco;
-	
+
 	//Construtor
 	public Cd(String titulo, int anoLancamento, String artista, float preco) {
 		super();
@@ -20,44 +23,44 @@ public class Cd {
 	public String getTitulo() {
 		return titulo;
 	}
-	
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	
+
 	public int getAnoLancamento() {
 		return anoLancamento;
 	}
-	
+
 	public void setAnoLancamento(int anoLancamento) {
 		this.anoLancamento = anoLancamento;
 	}
-	
+
 	public String getArtista() {
 		return artista;
 	}
-	
+
 	public void setArtista(String artista) {
 		this.artista = artista;
 	}
-	
+
 	public double getPreco() {
 		return preco;
 	}
-	
+
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	
+
 	//Método toString
 	public String toString(){
 		String texto = "\nTítulo: " + this.getTitulo();
-		texto += "\nAno de Lançamento: " + this.getAnoLancamento();
+		texto += "\nAno de lançamento: " + this.getAnoLancamento();
 		texto += "\nArtista: " + this.getArtista();
 		texto += "\nPreço : R$" + this.getPreco();
 		return texto;
 	}
-	
+
 	//Método Equals
 	public boolean equals(Cd c){
 		boolean r;
@@ -67,8 +70,8 @@ public class Cd {
 		}else{
 			r = false;
 		}
-		
+
 		return r;
 	}
-	
+
 }

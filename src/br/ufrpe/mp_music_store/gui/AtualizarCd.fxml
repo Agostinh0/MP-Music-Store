@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.mp_music_store.gui.AtualizarCdController">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="novoTituloCd" layoutX="143.0" layoutY="98.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite o título..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <Text fill="WHITE" layoutX="75.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Atualizar CD" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+            </Text>
+            <Button layoutX="459.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 15;" text="Voltar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <TextField fx:id="novoPrecoCd" layoutX="143.0" layoutY="234.0" prefHeight="25.0" prefWidth="90.0" promptText="R$" style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="novoArtistaCd" layoutX="142.0" layoutY="143.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite o artista..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <Label layoutX="62.0" layoutY="101.0" text="Novo Título:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="61.0" layoutY="146.0" text="Novo Artista:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="62.0" layoutY="191.0" text="Ano de Lançamento:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="61.0" layoutY="237.0" text="Novo Preço:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="novoAnoLancamentoCd" layoutX="191.0" layoutY="188.0" prefHeight="25.0" prefWidth="114.0" promptText="dd/mm/aaaa" style="-fx-background-color: grey;" />
+            <Button fx:id="botaoAlterar" layoutX="369.0" layoutY="336.0" mnemonicParsing="false" onAction="#atualizarCd" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Alterar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.mp_music_store.gui.FuncionarioStageController">
+   <content>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: black;">
+         <children>
+            <ListView fx:id="listaFunc" layoutX="82.0" layoutY="125.0" prefHeight="138.0" prefWidth="434.0" style="-fx-background-color: grey; -fx-background-radius: 10;" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="82.0" AnchorPane.topAnchor="125.0" />
+            <TextField fx:id="serachBar" layoutX="82.0" layoutY="87.0" prefHeight="25.0" prefWidth="330.0" promptText="Digite o CPF.." style="-fx-background-color: grey; -fx-background-radius: 15;" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="188.0" />
+            <Button layoutX="427.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Buscar" textFill="WHITE" AnchorPane.rightAnchor="83.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Text fill="WHITE" layoutX="82.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionários" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+            </Text>
+            <Button layoutX="82.0" layoutY="279.0" mnemonicParsing="false" onAction="#openAddStage" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Adicionar" textFill="WHITE" AnchorPane.bottomAnchor="94.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="169.0" layoutY="279.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Alterar" textFill="WHITE" AnchorPane.bottomAnchor="94.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="259.0" layoutY="277.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 15;" text="Remover" textFill="WHITE" AnchorPane.bottomAnchor="94.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
