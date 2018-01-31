@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -9,7 +10,7 @@
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="nomeFunc" layoutX="125.0" layoutY="91.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite um nome..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="nomeFunc" layoutX="117.0" layoutY="91.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite um nome..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
             <Text fill="WHITE" layoutX="77.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Funcionários" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="29.0" />
@@ -20,31 +21,31 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TextField fx:id="contratoFunc" layoutX="170.0" layoutY="280.0" prefHeight="25.0" prefWidth="161.0" promptText="Contrato..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
-            <TextField fx:id="telefoneFunc" layoutX="316.0" layoutY="182.0" prefHeight="25.0" prefWidth="110.0" promptText="Telefone..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
-            <TextField fx:id="cpfFunc" layoutX="125.0" layoutY="181.0" prefHeight="25.0" prefWidth="110.0" promptText="Digite um cpf..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
-            <TextField fx:id="enderecoFunc" layoutX="125.0" layoutY="136.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite um endereço..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
-            <Label layoutX="62.0" layoutY="94.0" text="Nome:" textFill="#949494">
+            <TextField fx:id="contratoFunc" layoutX="158.0" layoutY="310.0" prefHeight="25.0" prefWidth="120.0" promptText="Contrato..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="telefoneFunc" layoutX="117.0" layoutY="222.0" prefHeight="25.0" prefWidth="110.0" promptText="Telefone..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="cpfFunc" layoutX="117.0" layoutY="179.0" prefHeight="25.0" prefWidth="110.0" promptText="Digite um CPF..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <TextField fx:id="enderecoFunc" layoutX="117.0" layoutY="136.0" prefHeight="25.0" prefWidth="250.0" promptText="Digite um endereço..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <Label layoutX="50.0" layoutY="94.0" text="Nome:" textFill="#949494">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="62.0" layoutY="139.0" text="Endereço:" textFill="#949494">
+            <Label layoutX="50.0" layoutY="139.0" text="Endereço:" textFill="#949494">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="63.0" layoutY="184.0" text="CPF:" textFill="#949494">
+            <Label layoutX="50.0" layoutY="182.0" text="CPF:" textFill="#949494">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="250.0" layoutY="184.0" text="Telefone:" textFill="#949494">
+            <Label layoutX="50.0" layoutY="225.0" text="Telefone:" textFill="#949494">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="63.0" layoutY="283.0" text="N° de Contrato:" textFill="#949494">
+            <Label layoutX="50.0" layoutY="313.0" text="N° de Contrato:" textFill="#949494">
                <font>
                   <Font size="13.0" />
                </font>
@@ -54,22 +55,53 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Label fx:id="aviso" layoutX="65.0" layoutY="318.0" textFill="RED">
+            <Label fx:id="aviso" layoutX="63.0" layoutY="357.0" prefHeight="20.0" prefWidth="245.0" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="warnCpf" layoutX="125.0" layoutY="211.0" textFill="RED">
+            <Label fx:id="warnCpf" layoutX="233.0" layoutY="182.0" prefHeight="20.0" prefWidth="91.0" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="salarioFunc" layoutX="125.0" layoutY="237.0" prefHeight="25.0" prefWidth="161.0" promptText="Salário..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
-            <Label layoutX="63.0" layoutY="240.0" text="Salário:" textFill="#949494">
+            <TextField fx:id="salarioFunc" layoutX="117.0" layoutY="267.0" prefHeight="25.0" prefWidth="161.0" promptText="Salário..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <Label layoutX="50.0" layoutY="270.0" text="Salário:" textFill="#949494">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
+            <Label layoutX="422.0" layoutY="94.0" text="Tipo de Funcionário:" textFill="#949494">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="radBttn" layoutX="395.0" layoutY="126.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Admin" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupinho" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="489.0" layoutY="126.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-border-color: white; -fx-border-radius: 15;" text="Comum" textFill="WHITE" toggleGroup="$grupinho">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </RadioButton>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="149.0" layoutX="323.0" layoutY="175.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" width="236.0" />
+            <Label layoutX="340.0" layoutY="205.0" text="Login:" textFill="#08d065">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="340.0" layoutY="267.0" text="Senha:" textFill="#08d065">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="loginFunc" layoutX="399.0" layoutY="202.0" prefHeight="25.0" prefWidth="140.0" promptText="Username..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
+            <PasswordField fx:id="senhaFunc" layoutX="399.0" layoutY="264.0" prefHeight="25.0" prefWidth="140.0" promptText="Password..." style="-fx-background-color: grey; -fx-background-radius: 15;" />
          </children>
       </AnchorPane>
    </center>

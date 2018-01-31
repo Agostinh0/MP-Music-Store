@@ -69,6 +69,7 @@ public class VendasStageController implements Initializable{
 			//abrir tela de confirmação.
 			try {
 				Fachada.getInstance().removerVenda(item.getCodigoVenda());
+				Fachada.getInstance().salvarArquivoVendas();
 
 			}catch(ErroRemoverException e) {
 				e.printStackTrace();

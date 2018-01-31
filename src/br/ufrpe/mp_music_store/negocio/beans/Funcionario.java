@@ -10,17 +10,37 @@ public class Funcionario extends Pessoa implements Serializable{
 	private float salario;
 	private int numContrato;
 	private TipoFuncionario tipoFunc;
+	private Usuario usuario;
 
 	//Construtor
 	public Funcionario(String nome, long cpf, String endereco,
-			long telefone, float salario, int numContrato, TipoFuncionario tipoFunc){
+			long telefone, float salario, int numContrato, Usuario usuario, TipoFuncionario tipoFunc){
 		super(nome, cpf, endereco, telefone);
 		this.salario = salario;
 		this.numContrato = numContrato;
 		this.tipoFunc = tipoFunc;
+		this.usuario = usuario;
 	}
 
+	public boolean isAdm() {
+		boolean teste = false;
+		
+		if(this.tipoFunc == TipoFuncionario.ADM) {
+			teste = true;
+		}
+		
+		return teste;
+	}
+	
 	//Metodos Getters e Setters
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
 	public float getSalario() {
 		return salario;
 	}
@@ -44,7 +64,7 @@ public class Funcionario extends Pessoa implements Serializable{
 	public void setTipoFuncionario(TipoFuncionario tipoFunc){
 		this.tipoFunc = tipoFunc;
 	}
-
+	
 	public String toString(){
 		String texto = "\nNome: " + this.getNome();
 		texto += "\nCPF: " + this.getCpf();

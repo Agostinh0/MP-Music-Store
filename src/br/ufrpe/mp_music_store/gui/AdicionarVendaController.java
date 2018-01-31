@@ -1,6 +1,8 @@
 package br.ufrpe.mp_music_store.gui;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 import br.ufrpe.mp_music_store.exceptions.ObjectExistException;
@@ -23,47 +25,65 @@ public class AdicionarVendaController implements Initializable{
 	@FXML 
 	private Button botaoCadastrar, backBttn;
 	@FXML
-	private Label aviso, warn;
+	private Label aviso;
 	@FXML 
-	private TextField cpfCliente, tituloCd, codigoVenda;	
+	private TextField cpfCliente, tituloCd, codigoVenda, diaVenda, mesVenda, anoVenda, horaVenda, minVenda;	
 
 	@FXML
 	public void registVenda(ActionEvent event){
-		String cpfS, tituloS, codigoS;
+		String cpfS, tituloS, codigoS, saleDay, saleMonth, saleYear, saleHour, saleMinute;
 
 		cpfS = cpfCliente.getText();
 		tituloS = tituloCd.getText();
 		codigoS = codigoVenda.getText();
-
-		if(!cpfS.equals("") && !tituloS.equals("") && !codigoS.equals("")) {
+		saleDay = diaVenda.getText();
+		saleMonth = mesVenda.getText();
+		saleYear = anoVenda.getText();
+		saleHour = horaVenda.getText();
+		saleMinute = minVenda.getText();
+		
+		if(!cpfS.equals("") && !tituloS.equals("") && !codigoS.equals("") && !saleDay.equals("") &&
+				!saleMonth.equals("") && !saleYear.equals("") && !saleHour.equals("") && !saleMinute.equals("")) {
 
 			try{
 				long cpf = Long.parseLong(cpfS);
 				long codigo = Long.parseLong(codigoS);
-
+				int day = Integer.parseInt(saleDay);
+				int month = Integer.parseInt(saleMonth);
+				int year = Integer.parseInt(saleYear);
+				int hour = Integer.parseInt(saleHour);
+				int minute = Integer.parseInt(saleMinute);
+				
+				LocalDate dataDaVenda = LocalDate.of(year, month, day);
+				LocalTime horaDaVenda = LocalTime.of(hour, minute);
+				
 				Cliente cliente = Fachada.getInstance().buscarCliente(cpf);
 				Cd cd = Fachada.getInstance().buscarCd(tituloS);
-
-				Venda venda = new Venda(cliente, cd, codigo);
-
-				try{
-					Stage stage = (Stage) botaoCadastrar.getScene().getWindow();
-					Fachada.getInstance().registrarVenda(venda);
-					System.out.println("Registrado!");
-					stage.close();
-
-				}catch(ObjectExistException e){
-					Alert alert = new Alert(AlertType.WARNING);
-					alert.setTitle("Warning");
-					alert.setHeaderText("Erro ao registrar!");
-					alert.setContentText("Venda já registrada!");
-					alert.showAndWait();
-				}
-
-			}catch(ObjectNotExistException e) {
-				warn.setText("Cliente ou CD Inexistente(s).");
 				
-			}catch(Exception e){
+				if(cliente != null && cd != null){
+				
+					Venda venda = new Venda(cliente, cd, codigo, dataDaVenda, horaDaVenda);
+
+					try{
+						Stage stage = (Stage) botaoCadastrar.getScene().getWindow();
+						Fachada.getInstance().registrarVenda(venda);
+						Fachada.getInstance().salvarArquivoVendas();
+						System.out.println("Registrado!");
+						stage.close();
+
+					}catch(ObjectExistException e){
+						Alert alert = new Alert(AlertType.WARNING);
+						alert.setTitle("Warning");
+						alert.setHeaderText("Erro ao registrar!");
+						alert.setContentText("Venda já registrada!");
+						alert.showAndWait();
+					}
+				}
+			}catch(ObjectNotExistException e) {
+				aviso.setText("Cliente ou CD Inexistente(s).");
+				
+			}
+			catch(Exception e){
 				System.out.println(e.getMessage());
 			}
 		}else{

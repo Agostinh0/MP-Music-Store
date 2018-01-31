@@ -94,6 +94,7 @@ public class ClienteStageController implements Initializable{
 			//abrir tela de confirmação.
 			try {
 				Fachada.getInstance().removerCliente(item.getCpf());
+				Fachada.getInstance().salvarArquivoClientes();
 
 			}catch(ErroRemoverException e) {
 				e.printStackTrace();

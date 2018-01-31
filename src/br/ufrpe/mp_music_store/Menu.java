@@ -6,6 +6,7 @@ import br.ufrpe.mp_music_store.negocio.IFachada;
 import br.ufrpe.mp_music_store.negocio.beans.Cd;
 import br.ufrpe.mp_music_store.negocio.beans.Cliente;
 import br.ufrpe.mp_music_store.negocio.beans.Funcionario;
+import br.ufrpe.mp_music_store.negocio.beans.Usuario;
 import br.ufrpe.mp_music_store.negocio.beans.Venda;
 import br.ufrpe.mp_music_store.enumeracoes.TipoCliente;
 import br.ufrpe.mp_music_store.enumeracoes.TipoFuncionario;
@@ -562,7 +563,7 @@ public class Menu {
 					int opcaoFunc = in.nextInt();
 					
 					in.nextLine();//Limpar buffer
-
+					
 					System.out.println("Endereço do funcionário: ");
 					String enderecoFuncionario = in.nextLine();
 
@@ -581,9 +582,16 @@ public class Menu {
 
 					in.nextLine();//Limpar buffer
 					
+					System.out.println("Login: ");
+					String loginFunc = in.nextLine();
+					
+					System.out.println("Senha: ");
+					String senhaFunc = in.nextLine();
+					
 					if(opcaoFunc == 1){
 						Funcionario funcionario = new Funcionario(nomeFuncionario, cpfFuncionario, enderecoFuncionario,
-								telefoneFuncionario, salarioFuncionario, numContratoFuncionario, TipoFuncionario.ADM);
+								telefoneFuncionario, salarioFuncionario, numContratoFuncionario, 
+								new Usuario(loginFunc, senhaFunc), TipoFuncionario.ADM);
 	
 						try{
 							fachada.adicionarFuncionario(funcionario);
@@ -601,7 +609,8 @@ public class Menu {
 					
 					if(opcaoFunc == 2){
 						Funcionario funcionario = new Funcionario(nomeFuncionario, cpfFuncionario, enderecoFuncionario,
-								telefoneFuncionario, salarioFuncionario, numContratoFuncionario, TipoFuncionario.COMUM);
+								telefoneFuncionario, salarioFuncionario, numContratoFuncionario, 
+								new Usuario(loginFunc, senhaFunc), TipoFuncionario.COMUM);
 	
 						try{
 							fachada.adicionarFuncionario(funcionario);
@@ -752,7 +761,7 @@ public class Menu {
 					int opcaoFunc = in.nextInt();
 					
 					in.nextLine();//Limpar buffer
-
+					
 					System.out.println("Endereço: ");
 					String enderecoFuncionario = in.nextLine();
 
@@ -771,9 +780,16 @@ public class Menu {
 
 					in.nextLine();
 					
+					System.out.println("Login: ");
+					String loginFunc = in.nextLine();
+					
+					System.out.println("Senha: ");
+					String senhaFunc = in.nextLine();
+					
 					if(opcaoFunc == 1){
 						Funcionario f = new Funcionario(nomeFuncionario, cpfFuncionario, enderecoFuncionario, 
-								telefoneFuncionario, salarioFuncionario, numContratoFuncionario, TipoFuncionario.ADM);
+								telefoneFuncionario, salarioFuncionario, numContratoFuncionario, 
+								new Usuario(loginFunc, senhaFunc), TipoFuncionario.ADM);
 	
 						try{
 							fachada.atualizarFuncionario(pesquisa, f);
@@ -791,7 +807,8 @@ public class Menu {
 					
 					if(opcaoFunc == 2){
 						Funcionario f = new Funcionario(nomeFuncionario, cpfFuncionario, enderecoFuncionario, 
-								telefoneFuncionario, salarioFuncionario, numContratoFuncionario, TipoFuncionario.COMUM);
+								telefoneFuncionario, salarioFuncionario, numContratoFuncionario, 
+								new Usuario(loginFunc, senhaFunc), TipoFuncionario.COMUM);
 	
 						try{
 							fachada.atualizarFuncionario(pesquisa, f);

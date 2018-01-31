@@ -53,6 +53,7 @@ public class AdicionarCdController implements Initializable {
 				try{
 					Stage stage = (Stage) botaoCadastrar.getScene().getWindow();
 					Fachada.getInstance().adicionarCd(cd);
+					Fachada.getInstance().salvarArquivoCds();
 					System.out.println("Cadastrado!");
 					stage.close();
 

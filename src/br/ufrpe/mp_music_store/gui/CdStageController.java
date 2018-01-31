@@ -94,7 +94,7 @@ public class CdStageController implements Initializable{
 			//abrir tela de confirmação.
 			try {
 				Fachada.getInstance().removerCd(item.getTitulo());
-
+				Fachada.getInstance().salvarArquivoCds();
 			}catch(ErroRemoverException e) {
 				e.printStackTrace();
 

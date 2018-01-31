@@ -93,6 +93,7 @@ public class FuncionarioStageController implements Initializable{
 			//abrir tela de confirmação.
 			try {
 				Fachada.getInstance().removerFuncionario(item.getCpf());
+				Fachada.getInstance().salvarArquivoFunc();
 
 			}catch(ErroRemoverException e) {
 				e.printStackTrace();

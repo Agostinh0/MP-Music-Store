@@ -3,6 +3,7 @@ package br.ufrpe.mp_music_store.gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.ufrpe.mp_music_store.enumeracoes.TipoCliente;
 import br.ufrpe.mp_music_store.exceptions.InvalidCpfException;
 import br.ufrpe.mp_music_store.exceptions.ObjectExistException;
 import br.ufrpe.mp_music_store.negocio.Fachada;
@@ -49,25 +50,45 @@ public class AdicionarClienteController implements Initializable{
 				long telefone = Long.parseLong(telefoneS);
 				int n_cadastro = Integer.parseInt(n_cadastroS);
 
-				Cliente cliente = new Cliente(nome, cpf, endereco, telefone, n_cadastro, status);
+				if(status == true){
+					Cliente cliente = new Cliente(nome, cpf, endereco, telefone, n_cadastro, TipoCliente.PREMIUM);
+					try{
+						Stage stage = (Stage) botaoCadastrar.getScene().getWindow();
+						Fachada.getInstance().adicionarCliente(cliente);
+						Fachada.getInstance().salvarArquivoClientes();
+						System.out.println("Cadastrado!");
+						stage.close();
+					}catch(ObjectExistException e){
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Warning");
+							alert.setHeaderText("Erro ao cadastrar!");
+							alert.setContentText("Cliente já existe!");
+							alert.showAndWait();
 
-				try{
-					Stage stage = (Stage) botaoCadastrar.getScene().getWindow();
-					Fachada.getInstance().adicionarCliente(cliente);
-					System.out.println("Cadastrado!");
-					stage.close();
+					}catch(InvalidCpfException e) {
+						warnCpf.setText(e.getMessage());
+					}
 
-				}catch(ObjectExistException e){
-					Alert alert = new Alert(AlertType.WARNING);
-					alert.setTitle("Warning");
-					alert.setHeaderText("Erro ao cadastrar!");
-					alert.setContentText("Cliente já existe!");
-					alert.showAndWait();
-
-				}catch(InvalidCpfException e) {
-					warnCpf.setText(e.getMessage());
 				}
+				else if(status == false){
+					Cliente cliente = new Cliente(nome, cpf, endereco, telefone, n_cadastro, TipoCliente.NORMAL);
+					try{
+						Stage stage = (Stage) botaoCadastrar.getScene().getWindow();
+						Fachada.getInstance().adicionarCliente(cliente);
+						Fachada.getInstance().salvarArquivoClientes();
+						System.out.println("Cadastrado!");
+						stage.close();
+					}catch(ObjectExistException e){
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Warning");
+							alert.setHeaderText("Erro ao cadastrar!");
+							alert.setContentText("Cliente já existe!");
+							alert.showAndWait();
 
+					}catch(InvalidCpfException e) {
+						warnCpf.setText(e.getMessage());
+					}
+				}
 			}catch(Exception e){
 				System.out.println(e.getMessage());
 			}
