@@ -4,7 +4,10 @@ import java.util.ArrayList;
 
 import br.ufrpe.mp_music_store.exceptions.ErroAtualizarException;
 import br.ufrpe.mp_music_store.exceptions.ErroRemoverException;
+import br.ufrpe.mp_music_store.exceptions.InvalidCadException;
 import br.ufrpe.mp_music_store.exceptions.InvalidCpfException;
+import br.ufrpe.mp_music_store.exceptions.InvalidPasswordException;
+import br.ufrpe.mp_music_store.exceptions.InvalidTeleException;
 import br.ufrpe.mp_music_store.exceptions.ObjectExistException;
 import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
 import br.ufrpe.mp_music_store.negocio.beans.*;
@@ -33,7 +36,7 @@ public class Fachada implements IFachada{
 	}
 
 	/* Clientes */
-	public void adicionarCliente(Cliente c) throws ObjectExistException, InvalidCpfException{
+	public void adicionarCliente(Cliente c) throws ObjectExistException, InvalidCpfException, InvalidTeleException{
 		this.cadastroClientes.adicionarCliente(c);
 	}
 
@@ -45,7 +48,7 @@ public class Fachada implements IFachada{
 		this.cadastroClientes.removerCliente(cpf);
 	}
 
-	public void atualizarCliente(long pesquisa, Cliente cliente) throws ObjectNotExistException, ErroAtualizarException, InvalidCpfException{
+	public void atualizarCliente(long pesquisa, Cliente cliente) throws ObjectNotExistException, ErroAtualizarException, InvalidCpfException, InvalidTeleException{
 		this.cadastroClientes.atualizarCliente(pesquisa, cliente);
 	}
 
@@ -62,7 +65,7 @@ public class Fachada implements IFachada{
 	}
 
 	/* Funcionários */
-	public void adicionarFuncionario(Funcionario f) throws ObjectExistException, InvalidCpfException{
+	public void adicionarFuncionario(Funcionario f) throws ObjectExistException, InvalidCpfException, InvalidTeleException, InvalidCadException, InvalidPasswordException{
 		this.cadastroFuncionarios.adicionaFuncionario(f);
 	}
 
@@ -70,7 +73,7 @@ public class Fachada implements IFachada{
 		return this.cadastroFuncionarios.buscarFuncionario(cpf);
 	}
 
-	public void atualizarFuncionario(long pesquisa, Funcionario f) throws ObjectNotExistException, ErroAtualizarException, InvalidCpfException{
+	public void atualizarFuncionario(long pesquisa, Funcionario f) throws ObjectNotExistException, ErroAtualizarException, InvalidCpfException, InvalidTeleException, InvalidCadException, InvalidPasswordException{
 		this.cadastroFuncionarios.atualizar(pesquisa, f);
 	}
 

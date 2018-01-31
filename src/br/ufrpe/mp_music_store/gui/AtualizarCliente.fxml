@@ -51,12 +51,12 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="393.0" layoutY="188.0" text="Quer ser Premium?" textFill="#949494">
+            <Label layoutX="395.0" layoutY="191.0" text="Quer ser Premium?" textFill="#949494">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <RadioButton fx:id="newRadBttn" layoutX="360.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Premium" textFill="WHITE">
+            <RadioButton fx:id="newRadBttn" layoutX="362.0" layoutY="224.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #08d065; -fx-background-radius: 15;" text="Premium" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -64,7 +64,7 @@
                   <ToggleGroup fx:id="grupinho" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton layoutX="455.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-border-color: white; -fx-border-radius: 15;" text="Free" textFill="WHITE" toggleGroup="$grupinho">
+            <RadioButton layoutX="457.0" layoutY="224.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" style="-fx-border-color: white; -fx-border-radius: 15;" text="Free" textFill="WHITE" toggleGroup="$grupinho">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -79,7 +79,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="warnCpf" layoutX="66.0" layoutY="211.0" prefHeight="20.0" prefWidth="101.0" textFill="RED">
+            <Label fx:id="warnCpf" layoutX="281.0" layoutY="191.0" prefHeight="20.0" prefWidth="94.0" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="warnTele" layoutX="64.0" layoutY="258.0" prefHeight="20.0" prefWidth="199.0" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>

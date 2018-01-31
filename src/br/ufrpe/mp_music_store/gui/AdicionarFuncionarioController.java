@@ -4,7 +4,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import br.ufrpe.mp_music_store.enumeracoes.TipoFuncionario;
+import br.ufrpe.mp_music_store.exceptions.InvalidCadException;
 import br.ufrpe.mp_music_store.exceptions.InvalidCpfException;
+import br.ufrpe.mp_music_store.exceptions.InvalidPasswordException;
+import br.ufrpe.mp_music_store.exceptions.InvalidTeleException;
 import br.ufrpe.mp_music_store.exceptions.ObjectExistException;
 import br.ufrpe.mp_music_store.negocio.Fachada;
 import br.ufrpe.mp_music_store.negocio.beans.Funcionario;
@@ -25,7 +28,7 @@ public class AdicionarFuncionarioController implements Initializable {
 	@FXML 
 	private Button botaoCadastrar, backBttn;
 	@FXML
-	private Label aviso, warnCpf;
+	private Label aviso, warnCpf, warnTele, warnPass, warnContract;
 	@FXML 
 	private TextField nomeFunc, enderecoFunc, cpfFunc, telefoneFunc, salarioFunc, contratoFunc, loginFunc;
 	@FXML
@@ -51,7 +54,9 @@ public class AdicionarFuncionarioController implements Initializable {
 		if(!nome.equals("") && !endereco.equals("") && !cpfS.equals("")
 				&& !telefoneS.equals("") && !salarioS.equals("") && !n_contratoS.equals("")
 				&& !login.equals("") && !senha.equals("")){
-
+			
+			aviso.setText("");
+			
 			try{
 				long cpf = Long.parseLong(cpfS);
 				long telefone = Long.parseLong(telefoneS);
@@ -78,6 +83,18 @@ public class AdicionarFuncionarioController implements Initializable {
 
 					}catch(InvalidCpfException e) {
 						warnCpf.setText(e.getMessage());
+
+					}catch(InvalidTeleException e) {
+						warnCpf.setText("");
+						warnTele.setText(e.getMessage());
+
+					}catch(InvalidCadException e) {
+						warnTele.setText("");
+						warnContract.setText(e.getMessage());
+
+					}catch(InvalidPasswordException e) {
+						warnContract.setText("");
+						warnPass.setText(e.getMessage());
 					}
 				}
 				else if(status == false) {
@@ -99,6 +116,18 @@ public class AdicionarFuncionarioController implements Initializable {
 
 					}catch(InvalidCpfException e) {
 						warnCpf.setText(e.getMessage());
+
+					}catch(InvalidTeleException e) {
+						warnCpf.setText("");
+						warnTele.setText(e.getMessage());
+
+					}catch(InvalidCadException e) {
+						warnTele.setText("");
+						warnContract.setText(e.getMessage());
+
+					}catch(InvalidPasswordException e) {
+						warnContract.setText("");
+						warnPass.setText(e.getMessage());
 					}
 				}
 

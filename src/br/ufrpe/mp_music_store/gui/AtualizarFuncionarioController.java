@@ -5,7 +5,10 @@ import java.util.ResourceBundle;
 
 import br.ufrpe.mp_music_store.enumeracoes.TipoFuncionario;
 import br.ufrpe.mp_music_store.exceptions.ErroAtualizarException;
+import br.ufrpe.mp_music_store.exceptions.InvalidCadException;
 import br.ufrpe.mp_music_store.exceptions.InvalidCpfException;
+import br.ufrpe.mp_music_store.exceptions.InvalidPasswordException;
+import br.ufrpe.mp_music_store.exceptions.InvalidTeleException;
 import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
 import br.ufrpe.mp_music_store.negocio.Fachada;
 import br.ufrpe.mp_music_store.negocio.beans.Funcionario;
@@ -26,7 +29,7 @@ public class AtualizarFuncionarioController implements Initializable{
 	@FXML 
 	private Button botaoAtualizar, backBttn;
 	@FXML
-	private Label aviso, warnCpf;
+	private Label aviso, warnCpf, warnTele, warnContract, warnPass;
 	@FXML 
 	private TextField newNomeFunc, newEnderecoFunc, newCpfFunc, newTelefoneFunc, newSalarioFunc, newContratoFunc, newLoginFunc;
 	@FXML
@@ -55,6 +58,8 @@ public class AtualizarFuncionarioController implements Initializable{
 				&& !telefoneS.equals("") && !salarioS.equals("") && !n_contratoS.equals("")
 				&& !login.equals("") && !senha.equals("")){
 
+			aviso.setText("");
+			
 			try {
 				long cpf = Long.parseLong(cpfS);
 				long telefone = Long.parseLong(telefoneS);
@@ -81,7 +86,19 @@ public class AtualizarFuncionarioController implements Initializable{
 						alert.showAndWait();
 
 					} catch(InvalidCpfException e) {
-						warnCpf.setText("CPF Inválido!");
+						warnCpf.setText(e.getMessage());
+
+					}catch(InvalidTeleException e) {
+						warnCpf.setText("");
+						warnTele.setText(e.getMessage());
+
+					}catch(InvalidCadException e) {
+						warnTele.setText("");
+						warnContract.setText(e.getMessage());
+
+					}catch(InvalidPasswordException e) {
+						warnContract.setText("");
+						warnPass.setText(e.getMessage());
 					}
 				}
 				else if(!status) {
@@ -102,8 +119,20 @@ public class AtualizarFuncionarioController implements Initializable{
 						alert.setContentText("Funcionário não existe!");
 						alert.showAndWait();
 
-					} catch(InvalidCpfException e) {
+					}catch(InvalidCpfException e) {
 						warnCpf.setText("CPF Inválido!");
+
+					}catch(InvalidTeleException e) {
+						warnCpf.setText("");
+						warnTele.setText(e.getMessage());
+
+					}catch(InvalidCadException e) {
+						warnTele.setText("");
+						warnContract.setText(e.getMessage());
+
+					}catch(InvalidPasswordException e) {
+						warnContract.setText("");
+						warnPass.setText(e.getMessage());
 					}
 				}
 
