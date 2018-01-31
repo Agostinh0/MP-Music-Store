@@ -41,7 +41,7 @@ public class LoginController implements Initializable{
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
 			try {
-				Parent root = FXMLLoader.load(getClass().getResource("AdmMenu.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("/br/ufrpe/mp_music_store/gui/AdmMenu.fxml"));
 				Scene scene = new Scene(root);
 				Stage stage = new Stage();
 				stage.setResizable(false);
@@ -58,7 +58,7 @@ public class LoginController implements Initializable{
 			((Node) (event.getSource())).getScene().getWindow().hide();
 
 			try {
-				Parent root = FXMLLoader.load(getClass().getResource("FuncMenu.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("/br/ufrpe/mp_music_store/gui/FuncMenu.fxml"));
 				Scene scene = new Scene(root);
 				Stage stage = new Stage();
 				stage.setResizable(false);

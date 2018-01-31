@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import br.ufrpe.mp_music_store.enumeracoes.TipoCliente;
 import br.ufrpe.mp_music_store.exceptions.InvalidCpfException;
+import br.ufrpe.mp_music_store.exceptions.InvalidTeleException;
 import br.ufrpe.mp_music_store.exceptions.ObjectExistException;
 import br.ufrpe.mp_music_store.negocio.Fachada;
 import br.ufrpe.mp_music_store.negocio.beans.Cliente;
@@ -24,7 +25,7 @@ public class AdicionarClienteController implements Initializable{
 	@FXML 
 	private Button botaoCadastrar, backBttn;
 	@FXML
-	private Label aviso, warnCpf;
+	private Label aviso, warnCpf, warnTele;
 	@FXML 
 	private TextField nomeCliente, enderecoCliente, cpfCliente, telefoneCliente, cadastroCliente;
 	@FXML
@@ -45,6 +46,8 @@ public class AdicionarClienteController implements Initializable{
 		if(!nome.equals("") && !endereco.equals("") && !cpfS.equals("")
 				&& !telefoneS.equals("") && !n_cadastroS.equals("")){
 
+			aviso.setText("");
+			
 			try{
 				long cpf = Long.parseLong(cpfS);
 				long telefone = Long.parseLong(telefoneS);
@@ -59,14 +62,18 @@ public class AdicionarClienteController implements Initializable{
 						System.out.println("Cadastrado!");
 						stage.close();
 					}catch(ObjectExistException e){
-							Alert alert = new Alert(AlertType.WARNING);
-							alert.setTitle("Warning");
-							alert.setHeaderText("Erro ao cadastrar!");
-							alert.setContentText("Cliente já existe!");
-							alert.showAndWait();
+						Alert alert = new Alert(AlertType.WARNING);
+						alert.setTitle("Warning");
+						alert.setHeaderText("Erro ao cadastrar!");
+						alert.setContentText("Cliente já existe!");
+						alert.showAndWait();
 
 					}catch(InvalidCpfException e) {
 						warnCpf.setText(e.getMessage());
+
+					}catch(InvalidTeleException e) {
+						warnCpf.setText("");
+						warnTele.setText(e.getMessage());
 					}
 
 				}
@@ -79,14 +86,18 @@ public class AdicionarClienteController implements Initializable{
 						System.out.println("Cadastrado!");
 						stage.close();
 					}catch(ObjectExistException e){
-							Alert alert = new Alert(AlertType.WARNING);
-							alert.setTitle("Warning");
-							alert.setHeaderText("Erro ao cadastrar!");
-							alert.setContentText("Cliente já existe!");
-							alert.showAndWait();
+						Alert alert = new Alert(AlertType.WARNING);
+						alert.setTitle("Warning");
+						alert.setHeaderText("Erro ao cadastrar!");
+						alert.setContentText("Cliente já existe!");
+						alert.showAndWait();
 
 					}catch(InvalidCpfException e) {
 						warnCpf.setText(e.getMessage());
+
+					}catch(InvalidTeleException e) {
+						warnCpf.setText("");
+						warnTele.setText(e.getMessage());
 					}
 				}
 			}catch(Exception e){

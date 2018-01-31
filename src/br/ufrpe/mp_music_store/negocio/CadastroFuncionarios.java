@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import br.ufrpe.mp_music_store.dados.RepositorioFuncionarios;
 import br.ufrpe.mp_music_store.exceptions.ErroAtualizarException;
 import br.ufrpe.mp_music_store.exceptions.ErroRemoverException;
+import br.ufrpe.mp_music_store.exceptions.InvalidCadException;
 import br.ufrpe.mp_music_store.exceptions.InvalidCpfException;
+import br.ufrpe.mp_music_store.exceptions.InvalidPasswordException;
+import br.ufrpe.mp_music_store.exceptions.InvalidTeleException;
 import br.ufrpe.mp_music_store.exceptions.ObjectExistException;
 import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
 import br.ufrpe.mp_music_store.negocio.beans.Funcionario;
@@ -27,12 +30,21 @@ public class CadastroFuncionarios {
 		return instance;
 	}
 
-	public void adicionaFuncionario(Funcionario f) throws ObjectExistException, InvalidCpfException{
+	public void adicionaFuncionario(Funcionario f) throws ObjectExistException, InvalidCpfException, InvalidTeleException, InvalidCadException, InvalidPasswordException{
 		if(f == null) {
 			throw new IllegalArgumentException("Entrada Inválida.");
 		}
 		else if(String.valueOf(f.getCpf()).length() != 11) {
 			throw new InvalidCpfException();
+		}
+		else if(String.valueOf(f.getTelefone()).length() < 11) {
+			throw new InvalidTeleException();
+		}
+		else if(String.valueOf(f.getNumContrato()).length() < 4) {
+			throw new InvalidCadException();
+		}
+		else if(f.getUsuario().getPassword().length() < 6) {
+			throw new InvalidPasswordException();
 		}
 		else if(this.repositorio.existe(f.getCpf())) {
 			throw new ObjectExistException();
@@ -50,12 +62,21 @@ public class CadastroFuncionarios {
 		return this.repositorio.buscar(cpf);
 	}
 
-	public void atualizar(long pesquisa, Funcionario f) throws ObjectNotExistException, ErroAtualizarException, InvalidCpfException{
+	public void atualizar(long pesquisa, Funcionario f) throws ObjectNotExistException, ErroAtualizarException, InvalidCpfException, InvalidTeleException, InvalidCadException, InvalidPasswordException{
 		if(f == null){
 			throw new IllegalArgumentException("Entrada inválida.");
 		}
 		else if(String.valueOf(f.getCpf()).length() != 11) {
 			throw new InvalidCpfException();
+		}
+		else if(String.valueOf(f.getTelefone()).length() < 11) {
+			throw new InvalidTeleException();
+		}
+		else if(String.valueOf(f.getNumContrato()).length() > 4) {
+			throw new InvalidCadException();
+		}
+		else if(f.getUsuario().getPassword().length() < 6) {
+			throw new InvalidPasswordException();
 		}
 		else{
 			repositorio.atualizar(pesquisa, f);

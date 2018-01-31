@@ -6,25 +6,28 @@ import java.util.ArrayList;
 
 import br.ufrpe.mp_music_store.exceptions.ErroAtualizarException;
 import br.ufrpe.mp_music_store.exceptions.ErroRemoverException;
+import br.ufrpe.mp_music_store.exceptions.InvalidCadException;
 import br.ufrpe.mp_music_store.exceptions.InvalidCpfException;
+import br.ufrpe.mp_music_store.exceptions.InvalidPasswordException;
+import br.ufrpe.mp_music_store.exceptions.InvalidTeleException;
 import br.ufrpe.mp_music_store.exceptions.ObjectExistException;
 import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
 
 public interface IFachada {
 
 	//Clientes
-	void adicionarCliente(Cliente c) throws ObjectExistException, InvalidCpfException;
+	void adicionarCliente(Cliente c) throws ObjectExistException, InvalidCpfException, InvalidTeleException;
 	Cliente buscarCliente(long cpf) throws ObjectNotExistException;
 	void removerCliente(long cpf) throws ObjectNotExistException, ErroRemoverException;
-	void atualizarCliente(long pesquisa, Cliente c) throws ObjectNotExistException, ErroAtualizarException, InvalidCpfException;
+	void atualizarCliente(long pesquisa, Cliente c) throws ObjectNotExistException, ErroAtualizarException, InvalidCpfException, InvalidTeleException;
 	boolean existeCliente(long cpf);
 	ArrayList<Cliente> listarClientes();
 	void salvarArquivoClientes();
 
 	//Funcionários
-	void adicionarFuncionario(Funcionario f) throws ObjectExistException, InvalidCpfException;
+	void adicionarFuncionario(Funcionario f) throws ObjectExistException, InvalidCpfException, InvalidTeleException, InvalidCadException, InvalidPasswordException;
 	Funcionario buscarFuncionario(long cpf) throws ObjectNotExistException;
-	void atualizarFuncionario(long pesquisa, Funcionario f) throws ObjectNotExistException, ErroAtualizarException, InvalidCpfException;
+	void atualizarFuncionario(long pesquisa, Funcionario f) throws ObjectNotExistException, ErroAtualizarException, InvalidCpfException, InvalidTeleException, InvalidCadException, InvalidPasswordException;
 	void removerFuncionario(long cpf) throws ObjectNotExistException, ErroRemoverException;
 	boolean existeFuncionario(long cpf);
 	ArrayList<Funcionario> listarFuncionario();
