@@ -75,12 +75,12 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Label fx:id="aviso" layoutX="65.0" layoutY="318.0" textFill="RED">
+            <Label fx:id="aviso" layoutX="65.0" layoutY="318.0" prefHeight="20.0" prefWidth="211.0" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="warnCpf" layoutX="125.0" layoutY="211.0" textFill="RED">
+            <Label fx:id="warnCpf" layoutX="66.0" layoutY="211.0" prefHeight="20.0" prefWidth="84.0" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>

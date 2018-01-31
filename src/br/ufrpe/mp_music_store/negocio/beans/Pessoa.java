@@ -20,6 +20,8 @@ public class Pessoa implements Serializable{
 	}
 
 	//Métodos Getters e Setters
+	
+	
 	public String getNome() {
 		return nome;
 	}

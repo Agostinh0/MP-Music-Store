@@ -9,39 +9,20 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity"
-	prefHeight="504.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/8"
-	xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.mp_music_store.gui.login.LoginController">
 	<children>
-		<BorderPane minHeight="-Infinity" minWidth="-Infinity"
-			prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;"
-			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+		<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<bottom>
-				<HBox alignment="CENTER" prefHeight="52.0" prefWidth="600.0"
-					BorderPane.alignment="CENTER">
-					<children>
-						<Button mnemonicParsing="false" prefHeight="0.0" prefWidth="80.0"
-							style="-fx-background-color: black;" text="SIGN UP" textFill="#c3c3c3">
-							<font>
-								<Font name="System Bold" size="12.0" />
-							</font>
-						</Button>
-						<Button mnemonicParsing="false" prefHeight="0.0" prefWidth="80.0"
-							style="-fx-background-color: black;" text="SETTINGS" textFill="#c3c3c3">
-							<font>
-								<Font name="System Bold" size="12.0" />
-							</font>
-						</Button>
-					</children>
+				<HBox alignment="CENTER" prefHeight="52.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="MP Music Store™ / Todos os Direitos Reservados à Agostinho e Pedro" textFill="GREY" />
+               </children>
 				</HBox>
 			</bottom>
 			<center>
-				<VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0"
-					BorderPane.alignment="CENTER">
+				<VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
 					<children>
-						<ImageView fitHeight="128.0" fitWidth="139.0"
-							pickOnBounds="true" preserveRatio="true">
+						<ImageView fitHeight="128.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true">
 							<image>
 								<Image url="@../resources/temporary_Logo.png" />
 							</image>
@@ -49,23 +30,25 @@
 								<Insets bottom="10.0" />
 							</VBox.margin>
 						</ImageView>
-						<TextField maxHeight="-Infinity" maxWidth="-Infinity"
-							minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0"
-							prefWidth="206.0" promptText="Email or Username" VBox.vgrow="NEVER">
+						<TextField fx:id="loginF" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="206.0" promptText="Email or Username" style="-fx-background-color: grey;" VBox.vgrow="NEVER">
 							<VBox.margin>
 								<Insets bottom="20.0" left="200.0" right="200.0" />
 							</VBox.margin>
 						</TextField>
-						<PasswordField maxHeight="-Infinity" maxWidth="-Infinity"
-							minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0"
-							prefWidth="205.0" promptText="Password" VBox.vgrow="NEVER">
+						<PasswordField fx:id="senhaF" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="205.0" promptText="Password" style="-fx-background-color: grey;" VBox.vgrow="NEVER">
 							<VBox.margin>
-								<Insets bottom="50.0" left="200.0" right="200.0" />
+								<Insets bottom="10.0" left="200.0" right="200.0" />
 							</VBox.margin>
 						</PasswordField>
-						<Button mnemonicParsing="false" prefHeight="25.0"
-							prefWidth="88.0" style="-fx-background-color: springgreen;" text="Login"
-							textFill="WHITE">
+                  <Label fx:id="error" prefHeight="20.0" prefWidth="197.0" textFill="RED">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </Label>
+						<Button fx:id="entrarAdm" mnemonicParsing="false" onAction="#logar" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: springgreen;" text="Login" textFill="WHITE">
 							<font>
 								<Font name="System Bold" size="14.0" />
 							</font>

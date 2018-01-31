@@ -3,6 +3,7 @@ package br.ufrpe.mp_music_store.gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.ufrpe.mp_music_store.enumeracoes.TipoCliente;
 import br.ufrpe.mp_music_store.exceptions.ErroAtualizarException;
 import br.ufrpe.mp_music_store.exceptions.InvalidCpfException;
 import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
@@ -50,26 +51,53 @@ public class AtualizarClienteController implements Initializable{
 				long cpf = Long.parseLong(cpfS);
 				long telefone = Long.parseLong(telefoneS);
 				int n_cadastro = Integer.parseInt(n_cadastroS);
+				
+				if(status == true){
+					Cliente cliente = new Cliente(nome, cpf, endereco, telefone, n_cadastro, TipoCliente.PREMIUM);
 
-				Cliente cliente = new Cliente(nome, cpf, endereco, telefone, n_cadastro, status);
-
-				try {
-					Stage stage = (Stage) botaoAtualizar.getScene().getWindow();
-					Fachada.getInstance().atualizarCliente(clientEdit.getCpf(), cliente);
-					stage.close();
-
-				}catch (ErroAtualizarException e) {
-					e.printStackTrace();
-
-				} catch (ObjectNotExistException e) {
-					Alert alert = new Alert(AlertType.WARNING);
-					alert.setTitle("Warning");
-					alert.setHeaderText("Erro ao atualizar!");
-					alert.setContentText("Cliente não existe!");
-					alert.showAndWait();
+					try {
+						Stage stage = (Stage) botaoAtualizar.getScene().getWindow();
+						Fachada.getInstance().atualizarCliente(clientEdit.getCpf(), cliente);
+						Fachada.getInstance().salvarArquivoClientes();
+						stage.close();
+	
+					}catch (ErroAtualizarException e) {
+						e.printStackTrace();
+	
+					} catch (ObjectNotExistException e) {
+						Alert alert = new Alert(AlertType.WARNING);
+						alert.setTitle("Warning");
+						alert.setHeaderText("Erro ao atualizar!");
+						alert.setContentText("Cliente não existe!");
+						alert.showAndWait();
 					
-				} catch(InvalidCpfException e) {
-					warnCpf.setText("CPF Inválido!");
+					} catch(InvalidCpfException e) {
+						warnCpf.setText("CPF Inválido!");
+					}
+				}
+				
+				if(status == false){
+					Cliente cliente = new Cliente(nome, cpf, endereco, telefone, n_cadastro, TipoCliente.NORMAL);
+
+					try {
+						Stage stage = (Stage) botaoAtualizar.getScene().getWindow();
+						Fachada.getInstance().atualizarCliente(clientEdit.getCpf(), cliente);
+						Fachada.getInstance().salvarArquivoClientes();
+						stage.close();
+	
+					}catch (ErroAtualizarException e) {
+						e.printStackTrace();
+	
+					} catch (ObjectNotExistException e) {
+						Alert alert = new Alert(AlertType.WARNING);
+						alert.setTitle("Warning");
+						alert.setHeaderText("Erro ao atualizar!");
+						alert.setContentText("Cliente não existe!");
+						alert.showAndWait();
+					
+					} catch(InvalidCpfException e) {
+						warnCpf.setText("CPF Inválido!");
+					}
 				}
 
 			}catch(Exception e) {

@@ -28,6 +28,8 @@ public interface IFachada {
 	void removerFuncionario(long cpf) throws ObjectNotExistException, ErroRemoverException;
 	boolean existeFuncionario(long cpf);
 	ArrayList<Funcionario> listarFuncionario();
+	boolean verificaLogin(Usuario u);
+	boolean verificaLoginAdm(Usuario u);
 	void salvarArquivoFunc();
 	
 	//CD's

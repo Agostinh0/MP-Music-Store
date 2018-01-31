@@ -9,6 +9,7 @@ import br.ufrpe.mp_music_store.exceptions.InvalidCpfException;
 import br.ufrpe.mp_music_store.exceptions.ObjectExistException;
 import br.ufrpe.mp_music_store.exceptions.ObjectNotExistException;
 import br.ufrpe.mp_music_store.negocio.beans.Funcionario;
+import br.ufrpe.mp_music_store.negocio.beans.Usuario;
 
 public class CadastroFuncionarios {
 	private RepositorioFuncionarios repositorio;
@@ -73,6 +74,14 @@ public class CadastroFuncionarios {
 
 	public ArrayList<Funcionario> listarFuncionarios() {
 		return this.repositorio.listar();
+	}
+	
+	public boolean login(Usuario u) {
+		return this.repositorio.loginCheck(u);
+	}
+	
+	public boolean admLogin(Usuario u) {
+		return this.repositorio.admLoginCheck(u);
 	}
 	
 	public void salvarArquivo(){
